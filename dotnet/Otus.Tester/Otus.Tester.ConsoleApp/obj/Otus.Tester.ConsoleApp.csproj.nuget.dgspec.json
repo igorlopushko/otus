@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.ConsoleApp/Otus.Tester.ConsoleApp.csproj": {}
+  },
+  "projects": {
+    "/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.ConsoleApp/Otus.Tester.ConsoleApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.ConsoleApp/Otus.Tester.ConsoleApp.csproj",
+        "projectName": "Otus.Tester.ConsoleApp",
+        "projectPath": "/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.ConsoleApp/Otus.Tester.ConsoleApp.csproj",
+        "packagesPath": "/Users/igorlopushko/.nuget/packages/",
+        "outputPath": "/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.ConsoleApp/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/igorlopushko/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

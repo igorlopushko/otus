@@ -1,0 +1,12 @@
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/obj/Debug/netcoreapp3.1/Otus.Tester.Console.csprojAssemblyReference.cache
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/obj/Debug/netcoreapp3.1/Otus.Tester.Console.csproj.CoreCompileInputs.cache
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/obj/Debug/netcoreapp3.1/Otus.Tester.Console.AssemblyInfoInputs.cache
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/obj/Debug/netcoreapp3.1/Otus.Tester.Console.AssemblyInfo.cs
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/bin/Debug/netcoreapp3.1/Otus.Tester.Console.deps.json
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/bin/Debug/netcoreapp3.1/Otus.Tester.Console.runtimeconfig.json
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/bin/Debug/netcoreapp3.1/Otus.Tester.Console.runtimeconfig.dev.json
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/bin/Debug/netcoreapp3.1/Otus.Tester.Console.dll
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/bin/Debug/netcoreapp3.1/Otus.Tester.Console.pdb
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/obj/Debug/netcoreapp3.1/Otus.Tester.Console.dll
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/obj/Debug/netcoreapp3.1/Otus.Tester.Console.pdb
+/Users/igorlopushko/Projects/OtusCourse/dotnet/Otus.Tester/Otus.Tester.Console/obj/Debug/netcoreapp3.1/Otus.Tester.Console.genruntimeconfig.cache
