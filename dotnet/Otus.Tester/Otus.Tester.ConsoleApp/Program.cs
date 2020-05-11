@@ -9,20 +9,25 @@ namespace Otus.Tester.ConsoleApp
         static void Main(string[] args)
         {
             //ITask task = new StringLengthTask();
-            //string path = $"data/0.String/";
+            //string path = $"data/00.String/";
 
             //ITask task = new LuckyTicketsTask();
-            //string path = $"data/1.Tickets/";
+            //string path = $"data/01.Tickets/";
 
             //ITask task = new EuclidGcdMinus();
-            //string path = $"data/2.GCD/";
+            //string path = $"data/02.GCD/";
 
             //ITask task = new EuclidGcdMod();
-            //string path = $"data/2.GCD/";
+            //string path = $"data/02.GCD/";
 
-            ITask task = new EuclidGcdBitShift();
-            string path = $"data/2.GCD/";
+            //ITask task = new EuclidGcdBitShift();
+            //string path = $"data/02.GCD/";
 
+            //ITask task = new PowerIterative();
+            //string path = $"data/03.Power/";
+
+            ITask task = new PowerBinary();
+            string path = $"data/03.Power/";
 
             var t = new TestRunner(task, path);
             t.Run();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using Otus.Tester.ConsoleApp.Base;
 
@@ -22,13 +23,17 @@ namespace Otus.Tester.ConsoleApp
             {
                 string inputFile = $"{_path}/test.{count}.in";
                 string outputFile = $"{_path}/test.{count}.out";
+                Stopwatch sw = new Stopwatch();
 
-                if(!File.Exists(inputFile) || !File.Exists(outputFile))
+                if (!File.Exists(inputFile) || !File.Exists(outputFile))
                 {
                     break;
                 }
 
+                sw.Start();
                 Console.WriteLine($"Test #{count} - {ExecuteTest(inputFile, outputFile)}");
+                sw.Stop();
+                Console.WriteLine("Elapsed={0}", sw.Elapsed);
                 count++;
             }
         }
