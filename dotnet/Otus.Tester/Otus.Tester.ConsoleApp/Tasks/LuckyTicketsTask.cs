@@ -21,9 +21,9 @@ namespace Otus.Tester.ConsoleApp.Tasks
 
         public string Run(string[] data)
         {
-            int k = int.Parse(data[0]);
+            var k = int.Parse(data[0]);
 
-            Int64[] arr = null;
+            long[] arr = null;
             for (var i = 0; i < k; i++)
             {
                 arr = GetSumOfSquares(arr);
@@ -32,22 +32,22 @@ namespace Otus.Tester.ConsoleApp.Tasks
             return arr.Sum(i => i * i).ToString();
         }
 
-        private static Int64[] GetSumOfSquares(Int64[] arr)
+        private static long[] GetSumOfSquares(long[] arr)
         {
-            var result = new List<Int64>();
+            var result = new List<long>();
 
             if (arr == null)
             {
-                return new Int64[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+                return new long[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
             }
 
-            int startIndex = 0;
-            int endIndex = 0;
-            for (int i = 0; i < arr.Length + ChainLength; i++)
+            var startIndex = 0;
+            var endIndex = 0;
+            for (var i = 0; i < arr.Length + ChainLength; i++)
             {
-                Int64 newValue = 0;
+                long newValue = 0;
 
-                for (int j = startIndex; j <= endIndex; j++)
+                for (var j = startIndex; j <= endIndex; j++)
                 {
                     if (j >= arr.Length)
                     {
