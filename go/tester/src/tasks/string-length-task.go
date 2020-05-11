@@ -8,6 +8,7 @@ import (
 // StringLengthTask provides type for calculating string length
 type StringLengthTask struct{}
 
+// Run executes task logic
 func (t StringLengthTask) Run(data []string) string {
 	return strconv.Itoa(utf8.RuneCountInString(data[0]))
 }
