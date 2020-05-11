@@ -13,7 +13,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
             long n = long.Parse(data[0]);
 
             int count = 0;
-            for (long i = 1; i <= n; i++)
+            for (long i = 2; i <= n; i++)
             {
                 if (IsPrime(i, hashset))
                 {
@@ -40,9 +40,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
                     return true;
             }
 
-            long startIndex = primes.Count > 0 ? primes.Last() : 3;
-
-            for (long i = startIndex; i <= s; i += 2)
+            for (long i = 3; i <= s; i += 2)
             {
                 if (number % i == 0)
                 {

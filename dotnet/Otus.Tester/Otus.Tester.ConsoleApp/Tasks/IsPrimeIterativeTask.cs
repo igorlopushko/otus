@@ -24,8 +24,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
         {
             int count = 0;
             for (long i = 1; i <= number; i++)
-            {
-                
+            {   
                 if (number % i == 0)
                 {
                     count++;
