@@ -16,7 +16,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
             double d_number, d_power;
             if (double.TryParse(data[0], out d_number) && double.TryParse(data[1], out d_power))
             {
-                return Math.Round(Math.Pow(d_number, d_power), 11).ToString();
+                return Math.Round(Power(d_number, d_power), 11).ToString();
             }
 
             return "-1";
@@ -30,6 +30,23 @@ namespace Otus.Tester.ConsoleApp.Tasks
             }
 
             long result = 1;
+
+            for (var i = 0; i < Math.Abs(power); i++)
+            {
+                result *= number;
+            }
+
+            return result;
+        }
+
+        private double Power(double number, double power)
+        {
+            if (number == 0)
+            {
+                return 1;
+            }
+
+            double result = 1;
 
             for (var i = 0; i < Math.Abs(power); i++)
             {

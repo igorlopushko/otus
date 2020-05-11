@@ -23,11 +23,11 @@ namespace Otus.Tester.ConsoleApp
             //ITask task = new EuclidGcdBitShift();
             //string path = $"data/02.GCD/";
 
-            //ITask task = new PowerIterative();
-            //string path = $"data/03.Power/";
-
-            ITask task = new PowerBinary();
+            ITask task = new PowerIterative();
             string path = $"data/03.Power/";
+
+            //ITask task = new PowerBinary();
+            //string path = $"data/03.Power/";
 
             var t = new TestRunner(task, path);
             t.Run();
