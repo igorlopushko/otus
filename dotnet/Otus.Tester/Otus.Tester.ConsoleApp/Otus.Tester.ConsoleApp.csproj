@@ -7,6 +7,10 @@
 
   <ItemGroup>
     <Folder Include="Base\" />
+    <Folder Include="Tasks\" />
+    <Folder Include="data\" />
+    <Folder Include="Tasks\00.Strings\" />
+    <Folder Include="Tasks\01.Tickets\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="data\00.String\test.0.in">
