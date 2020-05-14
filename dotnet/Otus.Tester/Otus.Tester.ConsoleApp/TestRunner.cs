@@ -31,11 +31,33 @@ namespace Otus.Tester.ConsoleApp
                 }
 
                 sw.Start();
-                Console.WriteLine($"Test #{count} - {ExecuteTest(inputFile, outputFile)}");
+                var result = ExecuteTest(inputFile, outputFile);
                 sw.Stop();
-                Console.WriteLine("Elapsed={0}", sw.Elapsed);
+                
+                PrintTestResult(count, result, sw.Elapsed);
+
                 count++;
             }
+
+            Console.WriteLine("Completed. Press ENTER to exit.");
+        }
+
+        private void PrintTestResult(int testNumber, bool result, TimeSpan elapsedTime)
+        {
+            Console.Write($"Test #{testNumber} - ");
+            Console.ForegroundColor = ConsoleColor.Black;
+            if (result)
+            {
+                Console.BackgroundColor = ConsoleColor.Green;
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+            }
+            Console.Write("{0}", result ? "PASSED" : "FAILED");
+            Console.ResetColor();
+
+            Console.WriteLine("\tElapsed = {0}", elapsedTime);
         }
 
         private bool ExecuteTest(string inputFile, string outputFile)
