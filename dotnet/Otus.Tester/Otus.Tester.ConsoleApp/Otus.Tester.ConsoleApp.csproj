@@ -11,6 +11,9 @@
     <Folder Include="data\" />
     <Folder Include="Tasks\00.Strings\" />
     <Folder Include="Tasks\01.Tickets\" />
+    <Folder Include="Tasks\02.GCD\" />
+    <Folder Include="Tasks\03.Power\" />
+    <Folder Include="Tasks\05.Primes\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="data\00.String\test.0.in">
@@ -102,9 +105,6 @@
     </None>
     <None Update="data\01.Tickets\test.9.out">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="data\02.GCD\problem.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="data\02.GCD\test.0.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -228,9 +228,6 @@
     </None>
     <None Update="data\03.Power\test.9.out">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="data\05.Primes\problem.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="data\05.Primes\test.0.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
