@@ -5,24 +5,16 @@ namespace Otus.Tester.ConsoleApp.Tasks
 {
     public class FiboGoldenRationTask : ITask
     {
-        private const double PhiValue = 1.6180339;
-        private readonly int[] numbers = { 0, 1, 1, 2, 3, 5 };
-
         public string Run(string[] data)
         {
             int number = int.Parse(data[0]);
-            if(number < numbers.Length)
+            if(number == 0)
             {
-                return numbers[number].ToString();
+                return number.ToString();
             }
 
-            long result = numbers[5];
-            var count = numbers.Length - 1;
-            while(count < number)
-            {
-                result = (long)Math.Round(PhiValue * result);
-                count++;
-            }
+            double phi = (1 + Math.Sqrt(5)) / 2;
+            var result = (int)Math.Round(Math.Pow(phi, number) / Math.Sqrt(5));
 
             return result.ToString();
         }
