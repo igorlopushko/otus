@@ -67,6 +67,14 @@ namespace Otus.Tester.ConsoleApp
                 string[] data = File.ReadAllLines(inputFile);
                 string expected = File.ReadAllText(outputFile).Trim();
                 string actual = _task.Run(data);
+
+                
+
+                if (!actual.Equals(expected, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    throw new Exception();
+                }
+
                 return actual.Equals(expected, StringComparison.InvariantCultureIgnoreCase);
             }
             catch (Exception ex)
