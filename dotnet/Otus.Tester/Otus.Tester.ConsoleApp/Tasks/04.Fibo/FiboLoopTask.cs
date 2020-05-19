@@ -1,5 +1,4 @@
-﻿using System;
-using Otus.Tester.ConsoleApp.Base;
+﻿using Otus.Tester.ConsoleApp.Base;
 
 namespace Otus.Tester.ConsoleApp.Tasks
 {

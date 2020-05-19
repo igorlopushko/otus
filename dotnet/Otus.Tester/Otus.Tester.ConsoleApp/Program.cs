@@ -50,6 +50,14 @@ namespace Otus.Tester.ConsoleApp
                     task = new FiboLoopTask();
                     path = $"data/04.Fibo/";
                     break;
+                case 444:
+                    task = new FiboGoldenRationTask();
+                    path = $"data/04.Fibo/";
+                    break;
+                case 4444:
+                    task = new FiboMatrixTask();
+                    path = $"data/04.Fibo/";
+                    break;
                 case 5:
                     task = new IsPrimeIterativeTask();
                     path = $"data/05.Primes/";
