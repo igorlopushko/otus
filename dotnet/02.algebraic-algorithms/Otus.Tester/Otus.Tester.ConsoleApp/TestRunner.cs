@@ -42,11 +42,11 @@ namespace Otus.Tester.ConsoleApp
             Console.WriteLine("Completed. Press ENTER to exit.");
         }
 
-        private void PrintTestResult(int testNumber, bool result, TimeSpan elapsedTime)
+        private void PrintTestResult(int testNumber, Tuple<bool, string, string> result, TimeSpan elapsedTime)
         {
             Console.Write($"Test #{testNumber} - ");
             Console.ForegroundColor = ConsoleColor.Black;
-            if (result)
+            if (result.Item1)
             {
                 Console.BackgroundColor = ConsoleColor.Green;
             }
@@ -54,26 +54,24 @@ namespace Otus.Tester.ConsoleApp
             {
                 Console.BackgroundColor = ConsoleColor.Red;
             }
-            Console.Write("{0}", result ? "PASSED" : "FAILED");
+            Console.Write("{0}", result.Item1 ? "PASSED" : "FAILED");
             Console.ResetColor();
 
             Console.WriteLine("\tElapsed = {0}", elapsedTime);
+
+            //if(!result.Item1)
+            //{
+            //    Console.WriteLine($"expected: {result.Item2}; actual: {result.Item3}");
+            //}
         }
 
-        private bool ExecuteTest(string inputFile, string outputFile)
+        private Tuple<bool, string, string> ExecuteTest(string inputFile, string outputFile)
         {
-            try
-            {
-                string[] data = File.ReadAllLines(inputFile);
-                string expected = File.ReadAllText(outputFile).Trim();
-                string actual = _task.Run(data);
-                return actual.Equals(expected, StringComparison.InvariantCultureIgnoreCase);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
+            string[] data = File.ReadAllLines(inputFile);
+            string expected = File.ReadAllText(outputFile).Trim();
+            string actual = _task.Run(data);
+            var result = actual.Equals(expected, StringComparison.InvariantCultureIgnoreCase);
+            return new Tuple<bool, string, string>(result, expected, actual);
         }
     }
 }

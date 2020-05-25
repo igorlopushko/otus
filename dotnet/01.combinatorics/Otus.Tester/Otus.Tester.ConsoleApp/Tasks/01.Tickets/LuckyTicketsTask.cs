@@ -21,7 +21,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
 
         public string Run(string[] data)
         {
-            int k = int.Parse(data[0]);
+            var k = int.Parse(data[0]);
 
             long[] arr = null;
             for (var i = 0; i < k; i++)

@@ -9,99 +9,302 @@
     <Folder Include="Base\" />
     <Folder Include="Tasks\" />
     <Folder Include="data\" />
-    <Folder Include="Tasks\00.Strings\" />
-    <Folder Include="Tasks\01.Tickets\" />
+    <Folder Include="Tasks\02.GCD\" />
+    <Folder Include="Tasks\03.Power\" />
+    <Folder Include="Tasks\05.Primes\" />
+    <Folder Include="Tasks\04.Fibo\" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="data\00.String\test.0.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.0.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\00.String\test.0.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.0.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\00.String\test.1.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.1.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\00.String\test.1.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.1.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\00.String\test.2.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.2.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\00.String\test.2.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.2.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\00.String\test.3.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.3.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\00.String\test.3.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.3.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\00.String\test.4.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.4.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\00.String\test.4.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.4.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.0.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.5.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.0.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.5.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.1.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.6.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.1.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.6.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.2.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.7.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.2.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.7.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.3.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.8.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.3.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.8.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.4.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.9.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.4.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\02.GCD\test.9.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.5.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\problem.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.5.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\test.0.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.6.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\test.0.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.6.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\test.1.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.7.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\test.1.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.7.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\test.2.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.8.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\test.2.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.8.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\test.3.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.9.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\test.3.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\01.Tickets\test.9.out">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="data\03.Power\test.4.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.4.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.5.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.5.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.6.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.6.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.7.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.7.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.8.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.8.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.9.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\03.Power\test.9.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.0.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.0.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.1.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.1.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.10.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.10.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.11.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.11.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.12.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.12.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.13.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.13.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.14.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.14.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.2.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.2.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.3.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.3.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.4.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.4.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.5.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.5.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.6.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.6.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.7.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.7.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.8.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.8.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.9.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\05.Primes\test.9.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.0.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.0.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.1.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.1.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.2.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.2.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.3.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.3.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.4.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.4.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.5.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.5.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.6.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.6.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.7.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.7.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.8.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.8.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.9.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.9.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.10.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.10.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.11.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.11.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.12.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\04.Fibo\test.12.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>
