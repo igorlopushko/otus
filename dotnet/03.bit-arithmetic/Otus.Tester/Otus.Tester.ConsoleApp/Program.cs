@@ -27,7 +27,7 @@ namespace Otus.Tester.ConsoleApp
                     path = $"data/0.BITS/3.Bitboard - FEN/";
                     break;
                 case 4:
-                    task = new FenParserTask();
+                    task = new TruckerTask();
                     path = $"data/0.BITS/4.Bitboard - Дальнобойщики/";
                     break;
                 default:
