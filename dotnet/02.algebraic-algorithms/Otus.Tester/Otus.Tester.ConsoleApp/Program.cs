@@ -1,6 +1,7 @@
 ﻿using Otus.Tester.ConsoleApp.Tasks;
 using Otus.Tester.ConsoleApp.Base;
 using System;
+using Otus.Tester.ConsoleApp.Tasks._05.Primes;
 
 namespace Otus.Tester.ConsoleApp
 {
@@ -66,6 +67,10 @@ namespace Otus.Tester.ConsoleApp
                     task = new IsPrimeIterativeHashSetTask();
                     path = $"data/05.Primes/";
                     break;
+                case 55555:
+                    task = new IsPrimeSieveOfEratosthenes();
+                    path = $"data/05.Primes/";
+                    break;
                 default:
                     return;
             }
@@ -97,6 +102,7 @@ namespace Otus.Tester.ConsoleApp
                 Console.WriteLine("{0} - Найти количество простых чисел от 1 до N. - Через перебор делителей. Оптимизация №1", 55.ToString().PadRight(rightPadding));
                 Console.WriteLine("{0} - Найти количество простых чисел от 1 до N. - Через перебор делителей. Оптимизация №2", 555.ToString().PadRight(rightPadding));
                 Console.WriteLine("{0} - Найти количество простых чисел от 1 до N. - Через перебор делителей. Оптимизация №3. Использование хеш таблицы", 5555.ToString().PadRight(rightPadding));
+                Console.WriteLine("{0} - Найти количество простых чисел от 1 до N. - Решето Эратосфена со сложностью O(n log log n).", 55555.ToString().PadRight(rightPadding));
 
                 int result;
                 var answer = Console.ReadLine();

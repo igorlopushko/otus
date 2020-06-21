@@ -7,11 +7,9 @@
 
   <ItemGroup>
     <Folder Include="Base\" />
-    <Folder Include="Tasks\" />
     <Folder Include="data\" />
     <Folder Include="Tasks\02.GCD\" />
     <Folder Include="Tasks\03.Power\" />
-    <Folder Include="Tasks\05.Primes\" />
     <Folder Include="Tasks\04.Fibo\" />
   </ItemGroup>
   <ItemGroup>
