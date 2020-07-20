@@ -1,6 +1,6 @@
 ﻿namespace Otus.DataStructures
 {
-    public class VectorArray<T> : BaseArray<T>
+    public class VectorArray<T> : BaseArray<T>, IArray<T>
     {
         private int _vector;
 
@@ -20,8 +20,8 @@
             if (_array.Length == _size)
             {
                 Resize();
-            }
-            _array[_size - 1] = item;
+            } 
+            _array[_size] = item;
             _size++;
         }
 
@@ -52,7 +52,7 @@
             }
 
             _array = newArray;
-            _size = _array.Length;
+            _size++;
         }
 
         private void Resize()
@@ -63,7 +63,6 @@
                 newArray[i] = _array[i];
             }
             _array = newArray;
-            _size = _array.Length;
         }
     }
 }

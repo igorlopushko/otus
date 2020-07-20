@@ -1,8 +1,14 @@
 ﻿namespace Otus.DataStructures
 {
     public class FactorArray<T> : BaseArray<T>
-    {        
-        public FactorArray()
+    {
+        public FactorArray(int factor)
+        {
+            _size = 0;
+            _array = new T[factor];
+        }
+
+        public FactorArray() : this(10)
         {
             _size = 0;
             _array = new T[10];
@@ -14,7 +20,7 @@
             {
                 Resize();
             }
-            _array[_size - 1] = item;
+            _array[_size] = item;
             _size++;
         }
 
@@ -22,12 +28,12 @@
         {
             T[] newArray;
 
-            
+
             if (_array.Length == _size)
             {
                 // resize if length == size
                 newArray = new T[_array.Length * 2];
-            }            
+            }
             else
             {
                 // resize size + 1
@@ -45,7 +51,7 @@
             }
 
             _array = newArray;
-            _size = _array.Length;
+            _size++;
         }
 
         private void Resize()
@@ -57,7 +63,6 @@
             }
 
             _array = newArray;
-            _size = _array.Length;
         }
     }
 }

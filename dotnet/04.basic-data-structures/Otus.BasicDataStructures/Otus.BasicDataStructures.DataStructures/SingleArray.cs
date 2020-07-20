@@ -11,7 +11,8 @@
         public override void Add(T item)
         {
             Resize();
-            _array[_array.Length - 1] = item;
+            _array[_size] = item;
+            _size++;
         }
 
         public override void Add(T item, int index)
@@ -29,7 +30,7 @@
             }
 
             _array = newArray;
-            _size = _array.Length;
+            _size++;
         }
 
         private void Resize()
@@ -41,7 +42,6 @@
             }
 
             _array = newArray;
-            _size = _array.Length;
         }
     }
 }
