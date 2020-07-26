@@ -17,7 +17,7 @@
 
         public override void Add(T item, int index)
         {
-            T[] newArray = new T[_array.Length + 1];
+            var newArray = new T[_array.Length + 1];
 
             for (int i = 0; i < index; i++)
             {
@@ -36,7 +36,7 @@
         private void Resize()
         {
             T[] newArray = new T[_array.Length + 1];
-            for (int i = 0; i < _array.Length - 1; i++)
+            for (var i = 0; i < _array.Length; i++)
             {
                 newArray[i] = _array[i];
             }

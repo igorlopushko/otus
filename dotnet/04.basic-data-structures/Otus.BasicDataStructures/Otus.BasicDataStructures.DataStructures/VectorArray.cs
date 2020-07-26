@@ -4,7 +4,7 @@
     {
         private int _vector;
 
-        public VectorArray() : this(10)
+        public VectorArray() : this(100)
         {
         }
 
@@ -41,12 +41,12 @@
                 newArray = new T[_array.Length + 1];
             }
 
-            for (int i = 0; i < index; i++)
+            for (var i = 0; i < index; i++)
             {
                 newArray[i] = _array[i];
             }
             newArray[index] = item;
-            for (int i = index; i < _array.Length - 1; i++)
+            for (var i = index; i < _array.Length; i++)
             {
                 newArray[i + 1] = _array[i];
             }
@@ -57,8 +57,8 @@
 
         private void Resize()
         {
-            T[] newArray = new T[_array.Length + _vector];
-            for (int i = 0; i < _array.Length - 1; i++)
+            var newArray = new T[_array.Length + _vector];
+            for (var i = 0; i < _array.Length; i++)
             {
                 newArray[i] = _array[i];
             }

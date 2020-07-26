@@ -26,14 +26,14 @@ namespace Otus.DataStructures
 
         public virtual T Remove(int index)
         {
-            T[] newArray = new T[_array.Length - 1];
-            T item = _array[index];
+            var newArray = new T[_array.Length - 1];
+            var item = _array[index];
 
-            for (int i = 0; i < index; i++)
+            for (var i = 0; i < index; i++)
             {
                 newArray[i] = _array[i];
             }
-            for (int i = index; i < _array.Length - 1; i++)
+            for (var i = index; i < _array.Length - 1; i++)
             {
                 newArray[i] = _array[i + 1];
             }

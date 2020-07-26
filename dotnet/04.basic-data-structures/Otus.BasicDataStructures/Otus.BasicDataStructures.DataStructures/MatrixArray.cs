@@ -3,14 +3,14 @@
     public class MatrixArray<T> : IArray<T>
     {
         private int _size;
-        private int _vector;
+        private readonly int _vector;
         private IArray<T[]> _array;
 
         public int Size => _size;
 
         public MatrixArray()
         {
-            _array = new FactorArray<T[]>();
+            _array = new VectorArray<T[]>(1);
             _vector = 100;
             _size = 0;
         }
@@ -21,7 +21,7 @@
             {
                 _array.Add(new T[_vector]);
             }
-
+            
             _array.Get(_size / _vector)[_size % _vector] = item;
             _size++;
         }
@@ -34,12 +34,12 @@
                 return;
             }
 
-            var newArray = new FactorArray<T[]>();
+            var newArray = new VectorArray<T[]>(1);
             var newSize = 0;
-            bool isAdded = false;
+            var isAdded = false;
 
-            var outerArrayIndex = index / _vector;
-            var innerArrayIndex = index % _vector;
+            var outerIndex = index / _vector;
+            var innerIndex = index % _vector;
 
             var matrixRowCount = _size % _vector == 0 ? _size / _vector : (_size / _vector) + 1;
 
@@ -55,7 +55,7 @@
                     }
 
                     // add new item
-                    if (i == outerArrayIndex && j == innerArrayIndex)
+                    if (i == outerIndex && j == innerIndex)
                     {
                         newArray.Get(i)[j] = item;
                         isAdded = true;
@@ -77,11 +77,11 @@
                         }
                         else
                         {
-                            // create new array in the matrix and start from the 0 element
                             if (newSize == newArray.Size * _vector)
                             {
                                 newArray.Add(new T[_vector]);
                             }
+                            
                             newArray.Get(i + 1)[0] = _array.Get(i)[j];
                         }
 
@@ -107,19 +107,19 @@
 
         public T Remove(int index)
         {
-            var newArray = new FactorArray<T[]>();
+            var newArray = new VectorArray<T[]>(1);
             var newSize = 0;
-            bool isRemoved = false;
+            var isRemoved = false;
 
             var outerIndex = index / _vector;
             var innerIndex = index % _vector;
-            T removedItem = _array.Get(outerIndex)[innerIndex];
+            var removedItem = _array.Get(outerIndex)[innerIndex];
 
             var matrixRowCount = _size % _vector == 0 ? _size / _vector : (_size / _vector) + 1;
 
-            for (int i = 0; i < matrixRowCount; i++)
+            for (var i = 0; i < matrixRowCount; i++)
             {
-                for (int j = 0; j < _vector; j++)
+                for (var j = 0; j < _vector; j++)
                 {
                     // check for resize
                     if (newSize == newArray.Size * _vector)
@@ -132,11 +132,9 @@
                         isRemoved = true;
                         break;
                     }
-                    else
-                    {
-                        // copy from existing array
-                        newArray.Get(i)[j] = _array.Get(i)[j];
-                    }
+
+                    // copy from existing array
+                    newArray.Get(i)[j] = _array.Get(i)[j];
 
                     newSize++;
                 }
@@ -150,11 +148,11 @@
             // check if not the last item
             if (newSize < _size - 1)
             {
-                int continueRowIndex = (newSize + 1) / _vector;
-                int continueCellIndex = (newSize + 1) % _vector;
-                for (int i = continueRowIndex; i < matrixRowCount; i++)
+                var continueRowIndex = (newSize + 1) / _vector;
+                var continueCellIndex = (newSize + 1) % _vector;
+                for (var i = continueRowIndex; i < matrixRowCount; i++)
                 {
-                    for (int j = continueCellIndex; j < _vector; j++)
+                    for (var j = continueCellIndex; j < _vector; j++)
                     {
                         // check for resize
                         if (newSize == newArray.Size * _vector)
@@ -173,6 +171,8 @@
 
                         newSize++;
                     }
+
+                    continueCellIndex = 0;
                 }
             }
 
