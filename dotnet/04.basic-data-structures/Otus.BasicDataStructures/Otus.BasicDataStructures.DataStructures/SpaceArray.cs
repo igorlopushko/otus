@@ -38,7 +38,7 @@ namespace Otus.DataStructures
             // index is out of the range
             if (index > Size - 1)
             {
-                return;
+                throw new IndexOutOfRangeException();
             }
 
             var rowIndexToInsert = GetRowIndex(index);
@@ -148,7 +148,49 @@ namespace Otus.DataStructures
 
         public T Remove(int index)
         {
-            throw new NotImplementedException();
+            // index is out of the range
+            if (index > Size - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
+            var rowIndexToInsert = GetRowIndex(index);
+            var columnIndexToInsert = GetColumnIndex(index);
+
+            T item = default;
+            var isDeleted = false;
+            
+            for (var i = rowIndexToInsert; i < _actualSize[i]; i++)
+            {
+                for (var j = 0; j < _vector; j++)
+                {
+                    if (j == columnIndexToInsert)
+                    {
+                        item = _array.Get(i)[j];
+                        _array.Get(i)[j] = default;
+                        isDeleted = true;
+                        continue;
+                    }
+
+                    if (isDeleted)
+                    {
+                        if (j - 1 < 0)
+                        {
+                            continue;
+                        }
+                        
+                        _array.Get(i)[j - 1] = _array.Get(i)[j];
+                    }
+                }
+
+                if (isDeleted)
+                {
+                    _actualSize[i] -= 1;
+                    break;
+                }
+            }
+
+            return item;
         }
 
         public T Get(int index)

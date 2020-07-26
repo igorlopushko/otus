@@ -1,4 +1,6 @@
-﻿namespace Otus.DataStructures
+﻿using System;
+
+namespace Otus.DataStructures
 {
     public class FactorArray<T> : BaseArray<T>
     {
@@ -26,8 +28,13 @@
 
         public override void Add(T item, int index)
         {
+            // index is out of the range
+            if (index > _size - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            
             T[] newArray;
-
 
             if (_array.Length == _size)
             {

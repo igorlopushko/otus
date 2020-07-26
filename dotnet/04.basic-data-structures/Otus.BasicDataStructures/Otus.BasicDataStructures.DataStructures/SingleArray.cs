@@ -1,4 +1,6 @@
-﻿namespace Otus.DataStructures
+﻿using System;
+
+namespace Otus.DataStructures
 {
     public class SingleArray<T> : BaseArray<T>
     {        
@@ -17,6 +19,12 @@
 
         public override void Add(T item, int index)
         {
+            // index is out of the range
+            if (index > _size - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            
             var newArray = new T[_array.Length + 1];
 
             for (int i = 0; i < index; i++)

@@ -1,4 +1,6 @@
-﻿namespace Otus.DataStructures
+﻿using System;
+
+namespace Otus.DataStructures
 {
     public class MatrixArray<T> : IArray<T>
     {
@@ -31,7 +33,7 @@
             // index is out of the range
             if (index > _size - 1)
             {
-                return;
+                throw new IndexOutOfRangeException();
             }
 
             var newArray = new VectorArray<T[]>(1);
@@ -107,6 +109,12 @@
 
         public T Remove(int index)
         {
+            // index is out of the range
+            if (index > _size - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            
             var newArray = new VectorArray<T[]>(1);
             var newSize = 0;
             var isRemoved = false;

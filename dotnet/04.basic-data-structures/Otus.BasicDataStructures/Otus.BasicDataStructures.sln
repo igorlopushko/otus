@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.DataStructures", "Otus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Tester", "Otus.Tester\Otus.Tester.csproj", "{A4472CD2-E4BC-40FA-AA45-A384A1373F07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.BasicDataStructures.UnitTests", "Otus.BasicDataStructures.UnitTests\Otus.BasicDataStructures.UnitTests.csproj", "{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A4472CD2-E4BC-40FA-AA45-A384A1373F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4472CD2-E4BC-40FA-AA45-A384A1373F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4472CD2-E4BC-40FA-AA45-A384A1373F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

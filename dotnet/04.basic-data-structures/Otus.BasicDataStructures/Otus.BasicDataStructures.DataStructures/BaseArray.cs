@@ -26,6 +26,12 @@ namespace Otus.DataStructures
 
         public virtual T Remove(int index)
         {
+            // index is out of the range
+            if (index > _size - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            
             var newArray = new T[_array.Length - 1];
             var item = _array[index];
 
@@ -39,7 +45,7 @@ namespace Otus.DataStructures
             }
 
             _array = newArray;
-            _size = _array.Length;
+            _size -= 1;
 
             return item;
         }
