@@ -5,6 +5,6 @@ namespace Otus.DataStructures
         T Peek();
         T Dequeue();
         void Enqueue(T item);
-        
+        int Size { get; }
     }
 }

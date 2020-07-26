@@ -2,10 +2,18 @@ namespace Otus.DataStructures
 {
     public class Stack<T>
     {
+        private int _size;
         private Node<T> _head;
+
+        public int Size => _size;
         
         public T Peek()
         {
+            if (_head == null)
+            {
+                return default;
+            }
+            
             return _head.Value;
         }
 
@@ -25,6 +33,8 @@ namespace Otus.DataStructures
                 node.Next = _head;
                 _head = node;
             }
+
+            _size++;
         }
 
         public T Pop()
@@ -36,8 +46,10 @@ namespace Otus.DataStructures
             
             var item = _head.Value;
             _head = _head.Next;
-            return item;
 
+            _size--;
+            
+            return item;
         }
     }
 }

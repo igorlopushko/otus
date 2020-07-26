@@ -2,18 +2,30 @@ namespace Otus.DataStructures
 {
     public class Queue<T> : IQueue<T>
     {
+        private int _size;
         private Node<T> _head;
         private Node<T> _tail;
         
+        public int Size => _size;
+        
         public T Peek()
         {
+            if (_head == null)
+                return default;
+            
             return _head.Value;
         }
 
         public T Dequeue()
         {
+            if (_size == 0)
+            {
+                return default;
+            }
+            
             var item = _head;
             _head = _head.Next;
+            _size--;
             return item.Value;
         }
 
@@ -35,6 +47,8 @@ namespace Otus.DataStructures
                 _tail.Next = node;
                 _tail = node;
             }
+
+            _size++;
         }
     }
 }
