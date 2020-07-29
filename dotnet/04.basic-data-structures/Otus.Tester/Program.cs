@@ -14,11 +14,11 @@ namespace Otus.Tester
             IArray<int> matrix = new MatrixArray<int>();
             IArray<int> space = new SpaceArray<int>();;
             
-            TestPut(single, 1000000);
-            TestPut(vector, 1000000);
-            TestPut(factor, 1000000);
-            TestPut(matrix, 1000000);
-            TestPut(space,  1000000);
+            TestPut(single, 1000);
+            TestPut(vector, 1000);
+            TestPut(factor, 1000);
+            TestPut(matrix, 1000);
+            TestPut(space,  1000);
 
             Console.ReadLine();
         }

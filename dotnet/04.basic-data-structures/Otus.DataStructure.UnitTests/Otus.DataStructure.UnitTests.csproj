@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>Otus.DataStructure.UnitTests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Otus.BasicDataStructures.DataStructures\Otus.DataStructures.csproj" />
+      <ProjectReference Include="..\Otus.DataStructure\Otus.DataStructure.csproj" />
     </ItemGroup>
 
 </Project>

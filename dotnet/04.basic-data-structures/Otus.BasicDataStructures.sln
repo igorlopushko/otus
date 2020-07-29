@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.DataStructures", "Otus.BasicDataStructures.DataStructures\Otus.DataStructures.csproj", "{A02C6475-8C97-4DF5-9348-EEEDF02F4AD3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Tester", "Otus.Tester\Otus.Tester.csproj", "{A4472CD2-E4BC-40FA-AA45-A384A1373F07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.BasicDataStructures.UnitTests", "Otus.BasicDataStructures.UnitTests\Otus.BasicDataStructures.UnitTests.csproj", "{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.DataStructure", "Otus.DataStructure\Otus.DataStructure.csproj", "{F330B4E7-81C3-4C39-9F68-636C207C7BE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.DataStructure.UnitTests", "Otus.DataStructure.UnitTests\Otus.DataStructure.UnitTests.csproj", "{EBDF39D0-F5D5-49BB-B128-D81898BBDEE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A02C6475-8C97-4DF5-9348-EEEDF02F4AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A02C6475-8C97-4DF5-9348-EEEDF02F4AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A02C6475-8C97-4DF5-9348-EEEDF02F4AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A02C6475-8C97-4DF5-9348-EEEDF02F4AD3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A4472CD2-E4BC-40FA-AA45-A384A1373F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A4472CD2-E4BC-40FA-AA45-A384A1373F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4472CD2-E4BC-40FA-AA45-A384A1373F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4472CD2-E4BC-40FA-AA45-A384A1373F07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A7A815E-3100-4D4F-9B22-3C9C6EC0CE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F330B4E7-81C3-4C39-9F68-636C207C7BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F330B4E7-81C3-4C39-9F68-636C207C7BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F330B4E7-81C3-4C39-9F68-636C207C7BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F330B4E7-81C3-4C39-9F68-636C207C7BE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBDF39D0-F5D5-49BB-B128-D81898BBDEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBDF39D0-F5D5-49BB-B128-D81898BBDEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBDF39D0-F5D5-49BB-B128-D81898BBDEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBDF39D0-F5D5-49BB-B128-D81898BBDEE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Otus.BasicDataStructures.DataStructures\Otus.DataStructures.csproj" />
+    <ProjectReference Include="..\Otus.DataStructure\Otus.DataStructure.csproj" />
   </ItemGroup>
 
 </Project>
