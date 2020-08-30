@@ -58,30 +58,29 @@ namespace Otus.Tester.ConsoleApp.Tasks
         private int[] CountSort(int[] array, int exp)
         {
             var result = new int[array.Length];
-            int i; 
             var count = new int[10]; 
           
             //initializing all elements of count to 0 
-            for (i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 count[i] = 0;
             } 
         
             // store count of occurrences in count[]  
-            for (i = 0; i < array.Length; i++)
+            foreach (var item in array)
             {
-                count[(array[i] / exp) % 10]++;
+                count[(item / exp) % 10]++;
             }  
         
             // change count[i] so that count[i] now contains actual  
             // position of this digit in output[]  
-            for (i = 1; i < 10; i++)
+            for (var i = 1; i < 10; i++)
             {
                 count[i] += count[i - 1];
             }  
         
             // build the result array  
-            for (i = array.Length - 1; i >= 0; i--)
+            for (var i = array.Length - 1; i >= 0; i--)
             {
                 result[count[(array[i] / exp) % 10] - 1] = array[i];
                 count[(array[i] / exp) % 10]--;
