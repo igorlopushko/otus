@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Otus.BinarySearchTree.DataStructure;
 
 namespace Otus.BinarySearchTree.UnitTests
@@ -54,6 +55,33 @@ namespace Otus.BinarySearchTree.UnitTests
             Assert.AreEqual(3, tree.Count);
         }
 
+        [TestMethod]
+        public void Insert_InsertNodeWithExistingKey_ThrowsException()
+        {
+            var tree = new BST<int, int>();
+
+            var rootNode = new Node<int, int>
+            {
+                Key = 5,
+                Value = 5
+            };
+            var leftNode = new Node<int, int>
+            {
+                Key = 1,
+                Value = 1
+            };
+            var rightNode = new Node<int, int>
+            {
+                Key = 7,
+                Value = 7
+            };
+            tree.Insert(rootNode);
+            tree.Insert(leftNode);
+            tree.Insert(rightNode);
+
+            Assert.ThrowsException<ArgumentException>(() => tree.Insert(rightNode));
+        }
+        
         [TestMethod]
         public void Remove_RemoveRootElementWithNoLeaves_RemovesRoot()
         {

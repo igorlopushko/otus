@@ -92,6 +92,10 @@ namespace Otus.BinarySearchTree.DataStructure
             {
                 root.Right = InsertNode(root.Right, node);
             }
+            else if (root.Key.CompareTo(node.Key) == 0)
+            {
+                throw new ArgumentException($"Node with the same Key: {node.Key} already exist");
+            }
 
             // return unchanged subtree root
             return root;
