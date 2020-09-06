@@ -39,11 +39,11 @@ namespace Otus.Tester.ConsoleApp
             Console.WriteLine("Digits Array.");
             t = new TestRunner(task, $"data/1.digits/");
             t.Run();
-
+            
             Console.WriteLine("Sorted Array.");
             t = new TestRunner(task, $"data/2.sorted/");
             t.Run();
-
+            
             Console.WriteLine("Reverse Array.");
             t = new TestRunner(task, $"data/3.revers/");
             t.Run();
