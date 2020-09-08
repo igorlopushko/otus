@@ -1,6 +1,6 @@
 using System;
 
-namespace Otus.BinarySearchTree.DataStructure
+namespace Otus.Tree.DataStructure
 {
     public interface ITree<K, T> where K: IComparable<K>
     {

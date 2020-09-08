@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Otus.BinarySearchTree.DataStructure;
+using Otus.Tree.DataStructure;
 
-namespace Otus.BinarySearchTree.UnitTests
+namespace Otus.Tree.UnitTests
 {
     [TestClass]
     public class BSTTests

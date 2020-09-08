@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.BinarySearchTree.DataStructure", "Otus.BinarySearchTree.DataStructure\Otus.BinarySearchTree.DataStructure.csproj", "{1F4B08BD-8696-45E2-9106-FC581A488F2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Tree.DataStructure", "Otus.Tree.DataStructure\Otus.Tree.DataStructure.csproj", "{1F4B08BD-8696-45E2-9106-FC581A488F2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.BinarySearchTree.UnitTests", "Otus.BinarySearchTree.UnitTests\Otus.BinarySearchTree.UnitTests.csproj", "{0CD7D144-B232-4DC4-A39F-2E57886691EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Tree.UnitTests", "Otus.Tree.UnitTests\Otus.Tree.UnitTests.csproj", "{0CD7D144-B232-4DC4-A39F-2E57886691EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
