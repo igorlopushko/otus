@@ -55,74 +55,6 @@ namespace Otus.Tree.DataStructure
 
             return FindNode(_root, key);
         }
-
-        private Node<K, T> FindNode(Node<K, T> parent, K key)
-        {
-            if (parent == null)
-            {
-                return null;
-            }
-            
-            if (key.CompareTo(parent.Key) < 0)
-            {
-                return FindNode(parent.Left, key);
-            }
-            if (key.CompareTo(parent.Key) > 0)
-            {
-                return FindNode(parent.Right, key);
-            }
-            
-            return  parent;
-        }
-        
-        private Node<K, T> LeftRotate(Node<K, T> node)
-        {
-            var right = node.Right;  
-            var temp = right.Left;
-  
-            // perform rotation
-            right.Left = node;  
-            node.Right = temp;  
-  
-            // update heights  
-            node.Height = GetMaxHeight(GetHeight(node.Left), GetHeight(node.Right)) + 1;
-            right.Height = GetMaxHeight(GetHeight(right.Left), GetHeight(right.Right)) + 1;  
-  
-            // return new root  
-            return right;  
-        }
-        
-        private Node<K, T> RightRotate(Node<K, T> node)
-        {
-            var left = node.Left;  
-            var temp = left.Right;  
-  
-            // Perform rotation  
-            left.Right = node;
-            node.Left = temp;  
-  
-            // Update heights  
-            node.Height = GetMaxHeight(GetHeight(node.Left), GetHeight(node.Right)) + 1;
-            left.Height = GetMaxHeight(GetHeight(left.Left), GetHeight(left.Right)) + 1;
-  
-            // Return new root  
-            return left;  
-        }
-        
-        private int GetBalance(Node<K, T> node)
-        {
-            return node == null ? 0 : Math.Abs(GetHeight(node.Left) - GetHeight(node.Right));
-        }
-        
-        private int GetHeight(Node<K, T> node)
-        {
-            return node?.Height ?? 0;
-        }
-
-        private int GetMaxHeight(int a, int b)
-        {
-            return a > b ? a : b;
-        }
         
         private Node<K, T> InsertNode(Node<K, T> root, Node<K, T> node)
         {
@@ -149,36 +81,36 @@ namespace Otus.Tree.DataStructure
             }
 
             // step 2. update height of this ansector node
-            node.Height = 1 + GetMaxHeight(GetHeight(node.Left), GetHeight(node.Right)); 
+            root.Height = 1 + TreeHelper<K, T>.Max(TreeHelper<K, T>.GetHeight(root.Left), TreeHelper<K, T>.GetHeight(root.Right)); 
             
             // step 3. get balance factor of this ansector node to check whether this node became unbalanced
-            int balance = GetBalance(node);
+            int balance = TreeHelper<K, T>.GetBalance(root);
             
             // if the node is unbalanced perform rotation
             // left rotation case
-            if (balance > 1 && node.Key.CompareTo(node.Left.Key) < 0)
+            if (balance > 1 && node.Key.CompareTo(root.Left.Key) < 0)
             {
-                return RightRotate(node);
+                return RightRotate(root);
             }
             
             // right rotation case
-            if (balance < -1 && node.Key.CompareTo(node.Right.Key) > 0)
+            if (balance < -1 && node.Key.CompareTo(root.Right.Key) > 0)
             {
-                return LeftRotate(node);
+                return LeftRotate(root);
             }
             
             // left right rotation case
-            if (balance > 1 && node.Key.CompareTo(node.Left.Key) > 0)
+            if (balance > 1 && node.Key.CompareTo(root.Left.Key) > 0)
             {
-                node.Left = LeftRotate(node);
-                return RightRotate(node);
+                root.Left = LeftRotate(root.Left);
+                return RightRotate(root);
             }
             
             // right left rotation case 
-            if (balance < -1 && node.Key.CompareTo(node.Right.Key) < 0)
+            if (balance < -1 && node.Key.CompareTo(root.Right.Key) < 0)
             {
-                node.Right = RightRotate(node);
-                return LeftRotate(node);
+                root.Right = RightRotate(root.Right);
+                return LeftRotate(root);
             }
             
             // return unchanged subtree root
@@ -191,7 +123,7 @@ namespace Otus.Tree.DataStructure
             // return root if tree is empty
             if (root == null)
             {
-                return root;
+                return null;
             }
 
             // recursive down to the tree to find element to delete 
@@ -224,7 +156,7 @@ namespace Otus.Tree.DataStructure
                 else
                 {
                     // get inorder successor (smallest in the right subtree)
-                    var minRight = GetMinNode(root.Right);
+                    var minRight = TreeHelper<K, T>.GetMinNode(root.Right);
                     if (root.Key.CompareTo(_root.Key) == 0)
                     {
                         minRight.Left = _root.Left;
@@ -238,34 +170,40 @@ namespace Otus.Tree.DataStructure
                 _count--;
             }
 
+            // root element was deleted
+            if (root == null)
+            {
+                return null;
+            }
+            
             // step 2. update height of the current node
-            root.Height = GetMaxHeight(GetHeight(root.Left), GetHeight(root.Right)) + 1;
+            root.Height = TreeHelper<K, T>.Max(TreeHelper<K, T>.GetHeight(root.Left), TreeHelper<K, T>.GetHeight(root.Right)) + 1;
             
             // step 3. get balance factor of this ansector node to check whether this node became unbalanced
-            int balance = GetBalance(root);
+            int balance = TreeHelper<K, T>.GetBalance(root);
             
             // if current node is unbalanced perform rotation
             // left rotation case
-            if (balance > 1 && GetBalance(root.Left) >= 0)
+            if (balance > 1 && TreeHelper<K, T>.GetBalance(root.Left) >= 0)
             {
                 return RightRotate(root);
             }
             
             // right rotation case
-            if (balance < -1 && GetBalance(root.Right) <= 0)
+            if (balance < -1 && TreeHelper<K, T>.GetBalance(root.Right) <= 0)
             {
                 return LeftRotate(root);
             }
             
             // left right rotation case
-            if (balance > 1 && GetBalance(root.Left) < 0)
+            if (balance > 1 && TreeHelper<K, T>.GetBalance(root.Left) < 0)
             {
                 root.Left = LeftRotate(root.Left);
                 return RightRotate(root);
             }
             
             // right left rotation case
-            if (balance < -1 && GetBalance(root.Right) > 0)
+            if (balance < -1 && TreeHelper<K, T>.GetBalance(root.Right) > 0)
             {
                 root.Right = RightRotate(root.Right);
                 return LeftRotate(root);
@@ -273,17 +211,58 @@ namespace Otus.Tree.DataStructure
                 
             return root;
         }
-        
-        // Find min inorder node
-        private Node<K, T> GetMinNode(Node<K, T> root)
+
+        private static Node<K, T> FindNode(Node<K, T> parent, K key)
         {
-            var minNode = root;  
-            while (root.Left != null)
+            if (parent == null)
             {
-                minNode = root.Left;
-                root = root.Left;
+                return null;
             }
-            return minNode;
+            
+            if (key.CompareTo(parent.Key) < 0)
+            {
+                return FindNode(parent.Left, key);
+            }
+            if (key.CompareTo(parent.Key) > 0)
+            {
+                return FindNode(parent.Right, key);
+            }
+            
+            return  parent;
+        }
+        
+        private static Node<K, T> LeftRotate(Node<K, T> node)
+        {
+            var right = node.Right;  
+            var temp = right.Left;
+  
+            // perform rotation
+            right.Left = node;
+            node.Right = temp;
+  
+            // update heights  
+            node.Height = TreeHelper<K, T>.Max(TreeHelper<K, T>.GetHeight(node.Left), TreeHelper<K, T>.GetHeight(node.Right)) + 1;
+            right.Height = TreeHelper<K, T>.Max(TreeHelper<K, T>.GetHeight(right.Left), TreeHelper<K, T>.GetHeight(right.Right)) + 1;
+  
+            // return new root  
+            return right;
+        }
+        
+        private static Node<K, T> RightRotate(Node<K, T> node)
+        {
+            var left = node.Left;
+            var temp = left.Right;  
+  
+            // Perform rotation  
+            left.Right = node;
+            node.Left = temp;  
+  
+            // Update heights  
+            node.Height = TreeHelper<K, T>.Max(TreeHelper<K, T>.GetHeight(node.Left), TreeHelper<K, T>.GetHeight(node.Right)) + 1;
+            left.Height = TreeHelper<K, T>.Max(TreeHelper<K, T>.GetHeight(left.Left), TreeHelper<K, T>.GetHeight(left.Right)) + 1;
+  
+            // Return new root  
+            return left;
         }
     }
 }

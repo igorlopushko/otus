@@ -55,25 +55,6 @@ namespace Otus.Tree.DataStructure
             return FindNode(_root, key);
         }
 
-        private Node<K, T> FindNode(Node<K, T> parent, K key)
-        {
-            if (parent == null)
-            {
-                return null;
-            }
-            
-            if (key.CompareTo(parent.Key) < 0)
-            {
-                return FindNode(parent.Left, key);
-            }
-            if (key.CompareTo(parent.Key) > 0)
-            {
-                return FindNode(parent.Right, key);
-            }
-            
-            return  parent;
-        }
-
         private Node<K, T> InsertNode(Node<K, T> root, Node<K, T> node)
         {
             // if tree is empty return current node to be inserted.
@@ -106,7 +87,7 @@ namespace Otus.Tree.DataStructure
             // return root if tree is empty
             if (root == null)
             {
-                return root;
+                return null;
             }
 
             // recursive down to the tree to find element to delete 
@@ -139,7 +120,7 @@ namespace Otus.Tree.DataStructure
                 else
                 {
                     // get inorder successor (smallest in the right subtree)
-                    var minRight = GetMinNode(root.Right);
+                    var minRight = TreeHelper<K, T>.GetMinNode(root.Right);
                     if (root.Key.CompareTo(_root.Key) == 0)
                     {
                         minRight.Left = _root.Left;
@@ -156,16 +137,23 @@ namespace Otus.Tree.DataStructure
             return root;
         }
 
-        // Find min inorder node
-        private Node<K, T> GetMinNode(Node<K, T> root)
+        private static Node<K, T> FindNode(Node<K, T> parent, K key)
         {
-            var minNode = root;  
-            while (root.Left != null)
+            if (parent == null)
             {
-                minNode = root.Left;
-                root = root.Left;
+                return null;
             }
-            return minNode;
+            
+            if (key.CompareTo(parent.Key) < 0)
+            {
+                return FindNode(parent.Left, key);
+            }
+            if (key.CompareTo(parent.Key) > 0)
+            {
+                return FindNode(parent.Right, key);
+            }
+            
+            return  parent;
         }
     }
 }
