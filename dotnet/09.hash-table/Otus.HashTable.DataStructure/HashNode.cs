@@ -7,9 +7,16 @@ namespace Otus.HashTable.DataStructure
         private K _key;
         private T _value;
         private HashNode<K, T> _next;
+        private bool _isDeleted;
 
         public K Key => _key;
         public T Value => _value;
+
+        public bool IsDeleted
+        {
+            get { return _isDeleted; }
+            set { _isDeleted = value; }
+        }
 
         public HashNode<K, T> Next
         {

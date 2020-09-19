@@ -7,7 +7,7 @@ namespace Otus.HashTable.DataStructure
         private const double DefaultLoadFactor = 0.75;
         private const int DefaultCapacity = 100;
 
-        private double _loadFactor;
+        private readonly double _loadFactor;
         private int _threshold;
         private int _count;
         private HashNode<K, T>[] _buckets;
@@ -98,6 +98,7 @@ namespace Otus.HashTable.DataStructure
             var index = Hash(key);
             var bucket = _buckets[index];
 
+            // check that node is not already added.
             while (bucket != null)
             {
                 if (key.CompareTo(bucket.Key) == 0)
@@ -108,12 +109,14 @@ namespace Otus.HashTable.DataStructure
                 bucket = bucket.Next;
             }
 
+            // check if rehash and extension is needed.
             if (_count + 1 > _threshold)
             {
                 Rehash();
                 index = Hash(key);
             }
 
+            // add new node.
             var item = new HashNode<K, T>(key, value)
             {
                 Next = _buckets[index]
