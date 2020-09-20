@@ -70,8 +70,8 @@ namespace Otus.HashTable.DataStructure
         
         public T Find(K key)
         {
-            var i = 0;
-            var index = Hash(key, i);
+            var attempt = 0;
+            var index = Hash(key, attempt);
             var foundBucket = _buckets[index];
 
             while (foundBucket != null)
@@ -81,8 +81,8 @@ namespace Otus.HashTable.DataStructure
                     return foundBucket.Value;
                 }
 
-                i++;
-                index = Hash(key, i);
+                attempt++;
+                index = Hash(key, attempt);
                 foundBucket = _buckets[index];
             }
             
@@ -105,7 +105,7 @@ namespace Otus.HashTable.DataStructure
             if (foundBucket != null)
             {
                 // find appropriate bucket
-                while (!(foundBucket == null || foundBucket.IsDeleted))
+                while (foundBucket != null)
                 {
                     if (key.CompareTo(foundBucket.Key) == 0 && !foundBucket.IsDeleted)
                     {
@@ -126,7 +126,7 @@ namespace Otus.HashTable.DataStructure
             _buckets[index] = new HashNode<K, T>(key, value);
             _count++;
 
-            // swap with deleted node
+            // swap with first deleted node
             if (deletedNodeIndex != -1)
             {
                 var temp = _buckets[index];
@@ -169,12 +169,12 @@ namespace Otus.HashTable.DataStructure
             _threshold = Convert.ToInt32(newCapacity * _loadFactor);
             _buckets = new HashNode<K, T>[newCapacity];
 
-            int i = 0;
+            var attempt = 0;
             foreach (var node in oldBuckets)
             {
                 if (node == null) continue;
                 
-                var index = Hash(node.Key, i);
+                var index = Hash(node.Key, attempt);
                 var foundBucket = _buckets[index];
 
                 if (foundBucket != null)
@@ -182,8 +182,8 @@ namespace Otus.HashTable.DataStructure
                     // find appropriate bucket
                     while (foundBucket != null)
                     {
-                        i++;
-                        index = Hash(node.Key, i);
+                        attempt++;
+                        index = Hash(node.Key, attempt);
                         foundBucket = _buckets[index];
                     }
                 }

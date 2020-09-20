@@ -129,6 +129,34 @@ namespace Otus.HashTable.UnitTests
         }
 
         [TestMethod]
+        public void Add_BucketAlreadyIsUsed_GeneratesAnotherHash()
+        {
+            var hashTable = new Otus.HashTable.DataStructure.HashTableWithOpenAddressing<int, string>(10);
+            
+            hashTable.Add(22, "twenty two");
+            hashTable.Add(32, "thirty two");
+            
+            Assert.AreEqual("twenty two", hashTable.Find(22));
+            Assert.AreEqual("thirty two", hashTable.Find(32));
+            Assert.AreEqual(2, hashTable.Count);
+        }
+
+        [TestMethod]
+        public void Add_PutToRemovedNodeBucket_AddsToTheEndOfChainAndSwapsWithFirstRemoved()
+        {
+            var hashTable = new Otus.HashTable.DataStructure.HashTableWithOpenAddressing<int, string>(10);
+            
+            hashTable.Add(22, "twenty two");
+            hashTable.Add(32, "thirty two");
+            hashTable.Remove(22);
+            hashTable.Add(42, "forty two");
+            
+            Assert.AreEqual("thirty two", hashTable.Find(32));
+            Assert.AreEqual("forty two", hashTable.Find(42));
+            Assert.AreEqual(2, hashTable.Count);
+        }
+
+        [TestMethod]
         public void Remove_FromEmptyTable_NothingHappens()
         {
             var hashTable = new Otus.HashTable.DataStructure.HashTableWithOpenAddressing<int, string>();
