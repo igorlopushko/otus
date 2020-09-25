@@ -52,12 +52,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
 
         private int[][] Demukron(int[,] adjacencyMatrix)
         {
-            var result = Calculate(
-                adjacencyMatrix, 
-                new int[0], 
-                new int[adjacencyMatrix.GetLength(1)], 
-                new int[0][],
-                new HashSet<int>());
+            var result = Calculate(adjacencyMatrix);
 
             for (var i = 0; i < result.GetLength(0); i++)
             {
@@ -70,80 +65,80 @@ namespace Otus.Tester.ConsoleApp.Tasks
             return result;
         }
 
-        private int[][] Calculate(
-            int[,] adjacencyMatrix, 
-            int[] previousLayerArray, 
-            int[] previousSumArray, 
-            int[][] result,
-            HashSet<int> vertices)
+        private int[][] Calculate(int[,] adjacencyMatrix)
         {
-            var sumArray = new int[adjacencyMatrix.GetLength(0)];
-
-            for (var col = 0; col < adjacencyMatrix.GetLength(1); col++)
+            var previousLayerArray = new int[0];
+            var previousSumArray = new int[adjacencyMatrix.GetLength(1)];
+            var processedVertices = new HashSet<int>();
+            var result = new int[0][];
+            
+            while (processedVertices.Count < adjacencyMatrix.GetLength(0))
             {
-                var layerIndex = 0;
-                for (var row = 0; row < adjacencyMatrix.GetLength(0); row++)
+                var currentSumArray = new int[adjacencyMatrix.GetLength(0)];
+                
+                for (var col = 0; col < adjacencyMatrix.GetLength(1); col++)
                 {
-                    // if layers are present and layer in array skip
-                    if (previousLayerArray.Length > 0 && previousLayerArray[layerIndex] != row) continue;
-
-                    sumArray[col] += adjacencyMatrix[row, col];
-
-                    // if layers are present and all layers are processed quit
-                    if (previousLayerArray.Length > 0 && layerIndex + 1 >= previousLayerArray.Length) break;
-
-                    layerIndex++;
+                    var layerIndex = 0;
+                    for (var row = 0; row < adjacencyMatrix.GetLength(0); row++)
+                    {
+                        // if layers are present and layer in array skip
+                        if (previousLayerArray.Length > 0 && previousLayerArray[layerIndex] != row) continue;
+    
+                        currentSumArray[col] += adjacencyMatrix[row, col];
+    
+                        // if layers are present and all layers are processed quit
+                        if (previousLayerArray.Length > 0 && layerIndex + 1 >= previousLayerArray.Length) break;
+    
+                        layerIndex++;
+                    }
                 }
-            }
+    
+                // calculate = previous sum - current sum
+                for (var i = 0; i < currentSumArray.Length; i++)
+                {
+                    currentSumArray[i] = Math.Abs(previousSumArray[i] - currentSumArray[i]);
+                }
+                
+                // find zero sums to find vertices layers
+                var layerArray = new List<int>();
+                for (var i = 0; i < currentSumArray.Length; i++)
+                {
+                    if(processedVertices.Contains(i)) continue;
+                    if(currentSumArray[i] == 0) layerArray.Add(i);
+                }
+    
+                // build result array
+                if (result.GetLength(0) == 0)
+                {
+                    //create new
+                    result = new int[1][];
+                    result[0] = layerArray.ToArray();
+                }
+                else
+                {
+                    // copy
+                    var temp = new int[result.GetLength(0) + 1][];
+                    for (var i = 0; i < result.GetLength(0); i++)
+                    {
+                        temp[i] = result[i];
+                    }
+    
+                    temp[result.GetLength(0)] = layerArray.ToArray();
+    
+                    result = temp;
+                }
+                
+                // add layer vertices to the list of processed
+                foreach (var vertix in layerArray)
+                {
+                    processedVertices.Add(vertix);
+                }
 
-            // calculate = previous sum - current sum
-            for (var i = 0; i < sumArray.Length; i++)
-            {
-                sumArray[i] = Math.Abs(previousSumArray[i] - sumArray[i]);
+                previousSumArray = currentSumArray;
+                previousLayerArray = layerArray.ToArray();
             }
             
-            // find zero sums to find vertices layers
-            var layerArray = new List<int>();
-            for (var i = 0; i < sumArray.Length; i++)
-            {
-                if(vertices.Contains(i)) continue;
-                if(sumArray[i] == 0) layerArray.Add(i);
-            }
-
-            // build result array
-            if (result.GetLength(0) == 0)
-            {
-                //create new
-                result = new int[1][];
-                result[0] = layerArray.ToArray();
-            }
-            else
-            {
-                // copy
-                var temp = new int[result.GetLength(0) + 1][];
-                for (var i = 0; i < result.GetLength(0); i++)
-                {
-                    temp[i] = result[i];
-                }
-
-                temp[result.GetLength(0)] = layerArray.ToArray();
-
-                result = temp;
-            }
-            
-            // add layer vertices to the list of processed
-            foreach (var vertix in layerArray)
-            {
-                vertices.Add(vertix);
-            }
-
-            // if all vertices are processed return result
-            if (vertices.Count == adjacencyMatrix.GetLength(0))
-            {
-                return result;
-            }
-
-            return Calculate(adjacencyMatrix, layerArray.ToArray(), sumArray, result, vertices);
+            return result;
         }
     }
 }
