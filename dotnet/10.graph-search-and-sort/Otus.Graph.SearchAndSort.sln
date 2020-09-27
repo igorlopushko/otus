@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Tester.ConsoleApp", "Otus.Tester.ConsoleApp\Otus.Tester.ConsoleApp.csproj", "{0E546FEA-2997-411C-9ABF-0CD122E11FDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.DataStructure", "Otus.DataStructure\Otus.DataStructure.csproj", "{7273582F-ABDA-4473-8332-FE3FE8666448}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{0E546FEA-2997-411C-9ABF-0CD122E11FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E546FEA-2997-411C-9ABF-0CD122E11FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E546FEA-2997-411C-9ABF-0CD122E11FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7273582F-ABDA-4473-8332-FE3FE8666448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7273582F-ABDA-4473-8332-FE3FE8666448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7273582F-ABDA-4473-8332-FE3FE8666448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7273582F-ABDA-4473-8332-FE3FE8666448}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

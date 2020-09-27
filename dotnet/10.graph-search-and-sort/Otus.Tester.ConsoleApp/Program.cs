@@ -22,6 +22,10 @@ namespace Otus.Tester.ConsoleApp
                     task = new TopologicalSortTarjanTask();
                     path = "data/02.Topological Sort/";
                     break;
+                case 3:
+                    task = new GraphFindBridgesTask();
+                    path = "data/03.Bridge/";
+                    break;
                 default:
                     return;
             }
@@ -39,10 +43,9 @@ namespace Otus.Tester.ConsoleApp
             while (true)
             {
                 Console.WriteLine("Выберите номер задания/решения:");
-                Console.WriteLine("{0} - Топологическая сортировка Алгоритм Демукрона",
-                    1.ToString().PadRight(rightPadding));
-                Console.WriteLine("{0} - Топологическая сортировка Алгоритм Тарьяна",
-                    2.ToString().PadRight(rightPadding));
+                Console.WriteLine("{0} - Топологическая сортировка Алгоритм Демукрона", 1.ToString().PadRight(rightPadding));
+                Console.WriteLine("{0} - Топологическая сортировка Алгоритм Тарьяна", 2.ToString().PadRight(rightPadding));
+                Console.WriteLine("{0} - Поиск мостов в графе", 3.ToString().PadRight(rightPadding));
 
                 int result;
                 var answer = Console.ReadLine();

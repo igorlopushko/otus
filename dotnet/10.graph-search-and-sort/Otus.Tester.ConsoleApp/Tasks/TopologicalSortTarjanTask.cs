@@ -51,7 +51,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
 
         private int[] Tarjan(int[,] adjacencyMatrix)
         {
-            var stack = new Stack<int>();
+            var stack = new Otus.DataStructure.Stack<int>();
             var visited = new HashSet<int>();
 
             while (visited.Count < adjacencyMatrix.GetLength(0))
@@ -62,7 +62,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
                 }
             }
 
-            var result = new int[stack.Count];
+            var result = new int[stack.Size];
             for (var i = 0; i < result.Length; i++)
             {
                 result[i] = stack.Pop() + 1;
@@ -71,7 +71,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
             return result;
         }
 
-        private void Dfs(int vertix, int[,] adjacencyMatrix, Stack<int> stack, HashSet<int> visited)
+        private void Dfs(int vertix, int[,] adjacencyMatrix, Otus.DataStructure.Stack<int> stack, HashSet<int> visited)
         {
             if (visited.Contains(vertix)) return;
             
