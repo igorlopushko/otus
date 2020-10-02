@@ -16,9 +16,11 @@ namespace Otus.Tester.ConsoleApp
             {
                 case 1:
                     task = new KruskalAlgorithmTask();
+                    path = "data/0.Kruskal/";
                     break;
                 case 2:
                     task = new PrimAlgorithmTask();
+                    path = "data/1.Prim/";
                     break;
                 case 3:
                     task = new BoruvkaAlgorithmTask();
@@ -26,8 +28,7 @@ namespace Otus.Tester.ConsoleApp
                 default:
                     return;
             }
-
-            path = "data/";
+            
             var t = new TestRunner(task, path);
             t.Run();
 

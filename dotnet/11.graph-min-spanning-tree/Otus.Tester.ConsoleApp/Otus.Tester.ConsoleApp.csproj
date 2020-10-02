@@ -10,10 +10,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="data\test.0.in">
+    <None Update="data\0.Kruskal\test.0.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="data\test.0.out">
+    <None Update="data\0.Kruskal\test.0.out">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\1.Prim\test.0.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\1.Prim\test.0.out">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
