@@ -165,10 +165,10 @@ namespace Otus.HashTable.DataStructure
             var newCapacity = _buckets.Length * 2 + 1;
             _threshold = Convert.ToInt32(newCapacity * _loadFactor);
             _buckets = new HashNode<K, T>[newCapacity];
-            
-            foreach (var bucket in oldBuckets)
+
+            for (var i = oldBuckets.Length - 1; i > 0; i--)
             {
-                var currentNode = bucket;
+                var currentNode = oldBuckets[i];
                 while (currentNode != null)
                 {
                     var index = Hash(currentNode.Key);
