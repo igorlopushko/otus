@@ -19,7 +19,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
  
             if (inputArray.Length > 1)
             {
-                result = RunSort(inputArray);
+                result = Sort(inputArray);
             }
 
             return new[]
@@ -28,7 +28,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
             };
         }
 
-        private int[] RunSort(int[] array)
+        private int[] Sort(int[] array)
         {
             void merge(int left, int center, int right)
             {

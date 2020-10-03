@@ -1,4 +1,4 @@
-﻿    using System.Linq;
+﻿using System.Linq;
 using Otus.Tester.ConsoleApp.Base;
 
 namespace Otus.Tester.ConsoleApp.Tasks

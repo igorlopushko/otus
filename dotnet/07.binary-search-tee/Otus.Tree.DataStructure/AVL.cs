@@ -81,7 +81,9 @@ namespace Otus.Tree.DataStructure
             }
 
             // step 2. update height of this ansector node
-            root.Height = 1 + TreeHelper<K, T>.Max(TreeHelper<K, T>.GetHeight(root.Left), TreeHelper<K, T>.GetHeight(root.Right)); 
+            root.Height = 1 + TreeHelper<K, T>.Max(
+                TreeHelper<K, T>.GetHeight(root.Left), 
+                TreeHelper<K, T>.GetHeight(root.Right)); 
             
             // step 3. get balance factor of this ansector node to check whether this node became unbalanced
             int balance = TreeHelper<K, T>.GetBalance(root);

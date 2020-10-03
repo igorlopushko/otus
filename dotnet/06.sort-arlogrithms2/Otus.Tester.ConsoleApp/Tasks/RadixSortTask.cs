@@ -60,7 +60,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
             var result = new int[array.Length];
             var count = new int[10]; 
           
-            //initializing all elements of count to 0 
+            // initializing all elements of count to 0 
             for (var i = 0; i < 10; i++)
             {
                 count[i] = 0;
