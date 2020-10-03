@@ -33,7 +33,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
 
             foreach (var bridge in result)
             {
-                stringResult.Add(bridge.Item1 + " " + bridge.Item2);
+                stringResult.Add($"{bridge.Item1 + 1} {bridge.Item2 + 1}");
             }
             
             return stringResult.ToArray();
@@ -46,7 +46,42 @@ namespace Otus.Tester.ConsoleApp.Tasks
             var low = new int[adjacencyVector.GetLength(0)];
             var parent = new int[adjacencyVector.GetLength(0)];
             var result = new List<Tuple<int, int>>();
+
+            void dfs(int vertex)
+            {
+                // mark current vertex as visited
+                visited.Add(vertex);
+
+                // initialize discovery time and low value  
+                disc[vertex] = low[vertex] = ++_time;
+
+                foreach (var child in adjacencyVector[vertex])
+                {
+                    // if CHILD is not visited yet, then make it a child of current VERTEX n DFS tree and recur for it.
+                    if (!visited.Contains(child))
+                    {
+                        parent[child] = vertex;
+                        dfs(child); 
+                    
+                        // check if the subtree rooted with CHILD has a connection to one of the ancestors of VERTEX.
+                        low[vertex] = Math.Min(low[vertex], low[child]);
+                    
+                        // if the lowest vertex reachable from subtree under VERTEX is below CHILD in DFS tree,
+                        // then VERTEX-CHILD is a bridge.
+                        if (low[child] > disc[vertex])
+                        {
+                            result.Add(new Tuple<int, int>(vertex, child));
+                        }
+                    }
+                    // update low value of VERTEX for parent function calls.  
+                    else if (child != parent[vertex])
+                    {
+                        low[vertex] = Math.Min(low[vertex], low[child]);
+                    }
+                }
+            }
             
+            // init all parents with -1
             for (var i = 0; i < parent.Length; i++)
             {
                 parent[i] = -1;
@@ -56,52 +91,11 @@ namespace Otus.Tester.ConsoleApp.Tasks
             {
                 if (!visited.Contains(i))
                 {
-                    Dfs(i, adjacencyVector, visited, disc, low, parent, result);
+                    dfs(i);
                 }
-            }
-
-            var temp = new List<Tuple<int, int>>();
-            foreach (var t in result)
-            {
-                temp.Add(new Tuple<int, int>(t.Item1 + 1, t.Item2 + 1));
             }
             
-            return temp.ToArray();
-        }
-
-        private void Dfs(int vertix, int[][] adjacencyVector, HashSet<int> visited, 
-            int[] disc, int[] low, int[] parent, ICollection<Tuple<int, int>> result)
-        {
-            // mark current vertix as visited
-            visited.Add(vertix);
-
-            // initialize discovery time and low value  
-            disc[vertix] = low[vertix] = ++_time;
-
-            foreach (var child in adjacencyVector[vertix])
-            {
-                // if CHILD is not visited yet, then make it a child of current VERTIX n DFS tree and recur for it.
-                if (!visited.Contains(child))
-                {
-                    parent[child] = vertix;
-                    Dfs(child, adjacencyVector, visited, disc, low, parent, result); 
-                    
-                    // check if the subtree rooted with CHILD has a connection to one of the ancestors of VERTIX.
-                    low[vertix] = Math.Min(low[vertix], low[child]);
-                    
-                    // if the lowest vertex reachable from subtree under VERTIX is below CHILD in DFS tree,
-                    // then VERTIX-CHILD is a bridge.
-                    if (low[child] > disc[vertix])
-                    {
-                        result.Add(new Tuple<int, int>(vertix, child));
-                    }
-                }
-                // update low value of VERTIX for parent function calls.  
-                else if (child != parent[vertix])
-                {
-                    low[vertix] = Math.Min(low[vertix], low[child]);
-                }
-            }
+            return result.ToArray();
         }
     }
 }

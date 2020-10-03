@@ -31,6 +31,16 @@ namespace Otus.Tester.ConsoleApp.Tasks
             }
 
             var result = Demukron(matrix);
+            
+            // adjust to start vertices from 1
+            for (var i = 0; i < result.GetLength(0); i++)
+            {
+                for (var j = 0; j < result[i].Length; j++)
+                {
+                    result[i][j] += 1;
+                }
+            }
+            
             var stringResult = new List<string>();
 
             for (var i = 0; i < result.GetLength(0); i++)
@@ -54,14 +64,6 @@ namespace Otus.Tester.ConsoleApp.Tasks
         {
             var result = Calculate(adjacencyMatrix);
 
-            for (var i = 0; i < result.GetLength(0); i++)
-            {
-                for (var j = 0; j < result[i].Length; j++)
-                {
-                    result[i][j] += 1;
-                }
-            }
-            
             return result;
         }
 
@@ -103,8 +105,13 @@ namespace Otus.Tester.ConsoleApp.Tasks
                 var layerArray = new List<int>();
                 for (var i = 0; i < currentSumArray.Length; i++)
                 {
-                    if(processedVertices.Contains(i)) continue;
-                    if(currentSumArray[i] == 0) layerArray.Add(i);
+                    if (processedVertices.Contains(i) || currentSumArray[i] != 0)
+                    {
+                        continue;
+                    }
+
+                    layerArray.Add(i);
+                    processedVertices.Add(i);
                 }
     
                 // build result array
@@ -126,12 +133,6 @@ namespace Otus.Tester.ConsoleApp.Tasks
                     temp[result.GetLength(0)] = layerArray.ToArray();
     
                     result = temp;
-                }
-                
-                // add layer vertices to the list of processed
-                foreach (var vertix in layerArray)
-                {
-                    processedVertices.Add(vertix);
                 }
 
                 previousSumArray = currentSumArray;

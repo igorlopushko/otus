@@ -34,77 +34,61 @@ namespace Otus.Tester.ConsoleApp.Tasks
             var stringResult = new List<string>();
 
             var str = new StringBuilder();
-            
-            for (var i = 0; i < result.Length; i++)
+
+            while (result.Size > 0)
             {
-                str.Append(result[i]);
-                if (i < result.Length - 1)
+                str.Append(result.Pop() + 1);
+                if (result.Size > 0)
                 {
                     str.Append(" ");
                 }
-                
             }
             stringResult.Add(str.ToString());
             
             return stringResult.ToArray();
         }
 
-        private int[] Tarjan(int[,] adjacencyMatrix)
+        private Otus.DataStructure.Stack<int> Tarjan(int[,] adjacencyMatrix)
         {
             var stack = new Otus.DataStructure.Stack<int>();
             var visited = new HashSet<int>();
+            
+            void dfs(int vertex)
+            {
+                if (visited.Contains(vertex)) return;
+
+                // get child vertices
+                var childVertices = new List<int>();
+                for (var col = 0; col < adjacencyMatrix.GetLength(1); col++)
+                {
+                    if (adjacencyMatrix[vertex, col] == 1 && !visited.Contains(adjacencyMatrix[vertex, col]))
+                    {
+                        childVertices.Add(col);
+                    }
+                }
+
+                // go down to children
+                foreach (var child in childVertices)
+                {
+                    dfs(child);
+                }
+                // mark as visited and add to result
+                visited.Add(vertex);
+                stack.Push(vertex);
+            }
 
             while (visited.Count < adjacencyMatrix.GetLength(0))
             {
-                for (var vertix = 0; vertix < adjacencyMatrix.GetLength(0); vertix++)
+                for (var vertex = 0; vertex < adjacencyMatrix.GetLength(0); vertex++)
                 {
-                    Dfs(vertix, adjacencyMatrix, stack, visited);
+                    if (!visited.Contains(vertex))
+                    {
+                        dfs(vertex);
+                    }
                 }
             }
-
-            var result = new int[stack.Size];
-            for (var i = 0; i < result.Length; i++)
-            {
-                result[i] = stack.Pop() + 1;
-            }
-
-            return result;
-        }
-
-        private void Dfs(int vertix, int[,] adjacencyMatrix, Otus.DataStructure.Stack<int> stack, HashSet<int> visited)
-        {
-            if (visited.Contains(vertix)) return;
             
-            // get child vertices
-            var childVertices = new List<int>();
-            for (var col = 0; col < adjacencyMatrix.GetLength(1); col++)
-            {
-                if (adjacencyMatrix[vertix, col] == 1 && !visited.Contains(adjacencyMatrix[vertix, col]))
-                {
-                    childVertices.Add(col);
-                }
-            }
-
-            // if no child vertices stop and add to stack
-            if (childVertices.Count == 0)
-            {
-                stack.Push(vertix);
-            }
-
-            // go down to children
-            foreach (var child in childVertices)
-            {
-                Dfs(child, adjacencyMatrix, stack, visited);
-            }
-
-            // mark as visited
-            visited.Add(vertix);
-            
-            // add to the result if not already added
-            if (!stack.Contains(vertix))
-            {
-                stack.Push(vertix);
-            }
+            return stack;
         }
     }
 }
