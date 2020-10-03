@@ -59,7 +59,6 @@ namespace Otus.DataStructure
                 
                 _edges.Add(edge);    
             }
-            
         }
 
         public void AddEdge(int source, int destination, int rank)
@@ -92,7 +91,7 @@ namespace Otus.DataStructure
             _edges.Add(edge);
         }
 
-        public Edge[] GetMinSpanningTreeKruskal()
+        public IEnumerable<Edge> GetMinSpanningTreeKruskal()
         {
             var result = new List<Edge>();
             var sortedEdges = MergeSort.Sort(_edges.ToArray());
@@ -123,10 +122,84 @@ namespace Otus.DataStructure
                 sortedEdgeCount++;
             }
             
-            return result.ToArray();
+            return result;
         }
 
-        public Edge[] GetMinSpanningTreePrim()
+        public IEnumerable<Edge> GetMinSpanningTreeBoruvka()
+        {
+            var result = new List<Edge>();
+            var sortedEdges = MergeSort.Sort(_edges.ToArray());
+            
+            // an array to store index of the cheapest edge of subset
+            var cheapestEdge = new int[_vertices.Count];
+            
+            var subsets = new Subset[_vertices.Count];
+            for (var i = 0; i < _vertices.Count; i++)
+            {
+                subsets[i] = new Subset(i, 0);
+                cheapestEdge[i] = -1;
+            }
+
+            // initially there is a different tree for each vertix 
+            var treeCount = _vertices.Count;
+          
+            while (treeCount > 1) 
+            { 
+                // everytime initialize cheapest array 
+                for (var vertix = 0; vertix < _vertices.Count; vertix++) 
+                { 
+                    cheapestEdge[vertix] = -1; 
+                } 
+          
+                // traverse through all edges and update cheapest of every set 
+                for (var i = 0; i < sortedEdges.Length; i++) 
+                { 
+                    // find roots of two corners of current edge 
+                    var root1 = Find(subsets, sortedEdges[i].Source); 
+                    var root2 = Find(subsets, sortedEdges[i].Destination); 
+          
+                    // if two corners of current edge belong to same set, ignore current edge 
+                    if (root1 == root2) continue;
+          
+                    // check if current edge is closer to previous cheapest edges of set1 (root1) and set2 (root2) 
+                    if (cheapestEdge[root1] == -1 || sortedEdges[cheapestEdge[root1]].Rank > sortedEdges[i].Rank)
+                    {
+                        cheapestEdge[root1] = i;
+                    }
+
+                    if (cheapestEdge[root2] == -1 || sortedEdges[cheapestEdge[root2]].Rank > sortedEdges[i].Rank)
+                    {
+                        cheapestEdge[root2] = i;
+                    }
+                } 
+          
+                // consider the above picked cheapest edges and add them to result 
+                for (var i = 0; i < _vertices.Count; i++) 
+                { 
+                    // check if cheapest for current set exists 
+                    if (cheapestEdge[i] != -1) 
+                    { 
+                        var root1 = Find(subsets, sortedEdges[cheapestEdge[i]].Source); 
+                        var root2 = Find(subsets, sortedEdges[cheapestEdge[i]].Destination); 
+          
+                        if (root1 == root2) continue;
+                        
+                        result.Add(new Edge(
+                            sortedEdges[cheapestEdge[i]].Source,
+                            sortedEdges[cheapestEdge[i]].Destination,
+                            sortedEdges[cheapestEdge[i]].Rank));
+
+                        // union of set1 and set2 and decrease number of trees 
+                        Union(subsets, root1, root2); 
+                        treeCount--; 
+                    } 
+                } 
+            }
+
+            return result;
+        }
+        
+        public IEnumerable<Edge> GetMinSpanningTreePrim()
         {
             // Array to store constructed MST
             var parent = new int[_vertices.Count];
@@ -174,7 +247,7 @@ namespace Otus.DataStructure
                 result.Add(new Edge(parent[i], i, _adjacencyMatrix[i, parent[i]]));
             }
 
-            return result.ToArray();
+            return result;
         }
         
         private int GetMinKey(int[] key, bool[] vertexSet)

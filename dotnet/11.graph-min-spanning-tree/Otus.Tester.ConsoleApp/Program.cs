@@ -24,6 +24,7 @@ namespace Otus.Tester.ConsoleApp
                     break;
                 case 3:
                     task = new BoruvkaAlgorithmTask();
+                    path = "data/2.Boruvka/";
                     break;
                 default:
                     return;
