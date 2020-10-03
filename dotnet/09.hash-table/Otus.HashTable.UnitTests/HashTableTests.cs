@@ -119,13 +119,14 @@ namespace Otus.HashTable.UnitTests
         }
 
         [TestMethod]
-        public void Add_NodeWithKeyAlreadyExist_ThrowsException()
+        public void Add_NodeWithKeyAlreadyExist_RewritesValue()
         {
             var hashTable = new Otus.HashTable.DataStructure.HashTable<int, string>();
             
             hashTable.Add(1, "one");
+            hashTable.Add(1, "another one");
 
-            Assert.ThrowsException<ArgumentException>(() => hashTable.Add(1, "another one"));
+            Assert.AreEqual("another one", hashTable.Find(1));
         }
 
         [TestMethod]

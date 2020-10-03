@@ -124,8 +124,9 @@ namespace Otus.HashTable.UnitTests
             var hashTable = new Otus.HashTable.DataStructure.HashTableWithOpenAddressing<int, string>();
             
             hashTable.Add(1, "one");
+            hashTable.Add(1, "another one");
 
-            Assert.ThrowsException<ArgumentException>(() => hashTable.Add(1, "another one"));
+            Assert.AreEqual("another one", hashTable.Find(1));
         }
 
         [TestMethod]
