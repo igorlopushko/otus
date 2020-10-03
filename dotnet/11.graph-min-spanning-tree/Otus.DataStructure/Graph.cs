@@ -142,7 +142,7 @@ namespace Otus.DataStructure
 
             // initially there is a different tree for each vertix 
             var treeCount = _vertices.Count;
-          
+
             while (treeCount > 1) 
             { 
                 // everytime initialize cheapest array 
@@ -150,17 +150,17 @@ namespace Otus.DataStructure
                 { 
                     cheapestEdge[vertix] = -1; 
                 } 
-          
+
                 // traverse through all edges and update cheapest of every set 
                 for (var i = 0; i < sortedEdges.Length; i++) 
                 { 
                     // find roots of two corners of current edge 
                     var root1 = Find(subsets, sortedEdges[i].Source); 
-                    var root2 = Find(subsets, sortedEdges[i].Destination); 
-          
+                    var root2 = Find(subsets, sortedEdges[i].Destination);
+
                     // if two corners of current edge belong to same set, ignore current edge 
                     if (root1 == root2) continue;
-          
+
                     // check if current edge is closer to previous cheapest edges of set1 (root1) and set2 (root2) 
                     if (cheapestEdge[root1] == -1 || sortedEdges[cheapestEdge[root1]].Rank > sortedEdges[i].Rank)
                     {
@@ -171,8 +171,8 @@ namespace Otus.DataStructure
                     {
                         cheapestEdge[root2] = i;
                     }
-                } 
-          
+                }
+
                 // consider the above picked cheapest edges and add them to result 
                 for (var i = 0; i < _vertices.Count; i++) 
                 { 
@@ -180,8 +180,8 @@ namespace Otus.DataStructure
                     if (cheapestEdge[i] != -1) 
                     { 
                         var root1 = Find(subsets, sortedEdges[cheapestEdge[i]].Source); 
-                        var root2 = Find(subsets, sortedEdges[cheapestEdge[i]].Destination); 
-          
+                        var root2 = Find(subsets, sortedEdges[cheapestEdge[i]].Destination);
+
                         if (root1 == root2) continue;
                         
                         result.Add(new Edge(
@@ -203,13 +203,13 @@ namespace Otus.DataStructure
         {
             // Array to store constructed MST
             var parent = new int[_vertices.Count];
- 
+
             // Key values used to pick minimum weight edge in cut
             var key = new int[_vertices.Count];
- 
+
             // represents set of vertices included in MST
             var vertexSet = new bool[_vertices.Count];
- 
+
             // Initialize all keys as INFINITE
             for (var i = 0; i < _vertices.Count; i++) {
                 key[i] = int.MaxValue;
@@ -218,15 +218,15 @@ namespace Otus.DataStructure
             
             key[0] = 0;
             parent[0] = -1;
- 
+
             for (var count = 0; count < _vertices.Count - 1; count++) 
             {
                 // pick thd minimum key vertex from the set of vertices not yet included in MST
                 var minValue = GetMinKey(key, vertexSet);
- 
+
                 // add the picked vertex to the MST set
                 vertexSet[minValue] = true;
- 
+
                 // update key value and parent index of the adjacent vertices of the picked vertex.
                 // consider only those vertices which are not yet included in MST
                 for (var vertex = 0; vertex < _vertices.Count; vertex++)
@@ -280,8 +280,8 @@ namespace Otus.DataStructure
         private void Union(Subset[] subsets, int vertix1, int vertix2)
         {
             var root1 = Find(subsets, vertix1); 
-            var root2 = Find(subsets, vertix2); 
-  
+            var root2 = Find(subsets, vertix2);
+            
             // attach smaller rank tree under root of high rank tree  
             if (subsets[root1].Rank < subsets[root2].Rank)
             {
