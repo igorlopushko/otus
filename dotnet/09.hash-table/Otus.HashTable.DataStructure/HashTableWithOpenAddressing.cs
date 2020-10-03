@@ -38,18 +38,18 @@ namespace Otus.HashTable.DataStructure
         {
             var attempt = 0;
             var index = Hash(key, attempt);
-            var foundBucket = _buckets[index];
+            var item = _buckets[index];
 
-            while (foundBucket != null)
+            while (item != null)
             {
-                if (key.CompareTo(foundBucket.Key) == 0 && !foundBucket.IsDeleted)
+                if (key.CompareTo(item.Key) == 0 && !item.IsDeleted)
                 {
                     return true;
                 }
 
                 attempt++;
                 index = Hash(key, attempt);
-                foundBucket = _buckets[index];
+                item = _buckets[index];
             }
             
             return default;
@@ -72,18 +72,18 @@ namespace Otus.HashTable.DataStructure
         {
             var attempt = 0;
             var index = Hash(key, attempt);
-            var foundBucket = _buckets[index];
+            var item = _buckets[index];
 
-            while (foundBucket != null)
+            while (item != null)
             {
-                if (key.CompareTo(foundBucket.Key) == 0 && !foundBucket.IsDeleted)
+                if (key.CompareTo(item.Key) == 0 && !item.IsDeleted)
                 {
-                    return foundBucket.Value;
+                    return item.Value;
                 }
 
                 attempt++;
                 index = Hash(key, attempt);
-                foundBucket = _buckets[index];
+                item = _buckets[index];
             }
             
             return default;
@@ -93,7 +93,7 @@ namespace Otus.HashTable.DataStructure
         {
             var attempt = 0;
             var index = Hash(key, attempt);
-            var foundBucket = _buckets[index];
+            var item = _buckets[index];
             var deletedNodeIndex = -1;
 
             // check if rehash and extension is needed.
@@ -102,25 +102,24 @@ namespace Otus.HashTable.DataStructure
                 Rehash();
             }
 
-            if (foundBucket != null)
+            // find appropriate bucket
+            while (item != null)
             {
-                // find appropriate bucket
-                while (foundBucket != null)
+                if (key.CompareTo(item.Key) == 0)
                 {
-                    if (key.CompareTo(foundBucket.Key) == 0 && !foundBucket.IsDeleted)
-                    {
-                        throw new ArgumentException("Item with the same key already exists.");
-                    }
-                    
-                    if (deletedNodeIndex == -1 && foundBucket.IsDeleted)
-                    {
-                        deletedNodeIndex = index;
-                    }
-
-                    attempt++;
-                    index = Hash(key, attempt);
-                    foundBucket = _buckets[index];
+                    // rewrite value and break if already exist
+                    item.Value = value;
+                    break;
                 }
+                
+                if (deletedNodeIndex == -1 && item.IsDeleted)
+                {
+                    deletedNodeIndex = index;
+                }
+
+                attempt++;
+                index = Hash(key, attempt);
+                item = _buckets[index];
             }
             
             _buckets[index] = new HashNode<K, T>(key, value);
@@ -139,26 +138,26 @@ namespace Otus.HashTable.DataStructure
         {
             var attempt = 0;
             var index = Hash(key, attempt);
-            var bucket = _buckets[index];
+            var item = _buckets[index];
 
-            while (bucket != null)
+            while (item != null)
             {
-                if (key.CompareTo(bucket.Key) == 0)
+                if (key.CompareTo(item.Key) == 0)
                 {
-                    bucket.IsDeleted = true;
+                    item.IsDeleted = true;
                     _count--;
                     return;
                 }
 
                 attempt++;
                 index = Hash(key, attempt);
-                bucket = _buckets[index];
+                item = _buckets[index];
             }
         }
 
         private int Hash(K key, int i)
         {
-            return key == null ? 0 : Math.Abs((key.GetHashCode() + c1 * i + c2 * i * i) % _buckets.Length);
+            return key == null ? 0 : Math.Abs(key.GetHashCode() + c1 * i + c2 * i * i) % _buckets.Length;
         }
 
         private void Rehash()
@@ -172,19 +171,19 @@ namespace Otus.HashTable.DataStructure
             var attempt = 0;
             foreach (var node in oldBuckets)
             {
-                if (node == null) continue;
+                if (node == null || node.IsDeleted) continue;
                 
                 var index = Hash(node.Key, attempt);
-                var foundBucket = _buckets[index];
+                var item = _buckets[index];
 
-                if (foundBucket != null)
+                if (item != null)
                 {
                     // find appropriate bucket
-                    while (foundBucket != null)
+                    while (item != null)
                     {
                         attempt++;
                         index = Hash(node.Key, attempt);
-                        foundBucket = _buckets[index];
+                        item = _buckets[index];
                     }
                 }
             

@@ -103,7 +103,9 @@ namespace Otus.HashTable.DataStructure
             {
                 if (key.CompareTo(bucket.Key) == 0)
                 {
-                    throw new ArgumentException("Item with the same key already exists.");
+                    // rewrite value and break if already exist
+                    bucket.Value = value;
+                    return;
                 }
 
                 bucket = bucket.Next;

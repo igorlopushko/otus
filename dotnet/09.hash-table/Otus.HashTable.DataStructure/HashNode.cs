@@ -10,7 +10,12 @@ namespace Otus.HashTable.DataStructure
         private bool _isDeleted;
 
         public K Key => _key;
-        public T Value => _value;
+
+        public T Value
+        {
+          get => _value;
+          set => _value = value;
+        }
 
         public bool IsDeleted
         {
