@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Archiver.Console", "Otus.Archiver.Console\Otus.Archiver.Console.csproj", "{ED473E06-C854-4B7A-A28C-7C088E429A91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Archiver.Logic", "Otus.Archiver.Logic\Otus.Archiver.Logic.csproj", "{86273ADC-77DD-44D7-897A-8C33A0F4A103}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Archiver.Logic.UnitTests", "Otus.Archiver.Logic.UnitTests\Otus.Archiver.Logic.UnitTests.csproj", "{115B5062-8753-4141-8B31-862CFB6D9BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Archiver.Base", "Otus.Archiver.Base\Otus.Archiver.Base.csproj", "{EC8B628F-9EFC-42DD-9965-8AC2F0A91894}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Archiver.Algorithm", "Otus.Archiver.Algorithm\Otus.Archiver.Algorithm.csproj", "{329E99C0-7BFC-4C8D-8395-7CBF71637B43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED473E06-C854-4B7A-A28C-7C088E429A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED473E06-C854-4B7A-A28C-7C088E429A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED473E06-C854-4B7A-A28C-7C088E429A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED473E06-C854-4B7A-A28C-7C088E429A91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86273ADC-77DD-44D7-897A-8C33A0F4A103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86273ADC-77DD-44D7-897A-8C33A0F4A103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86273ADC-77DD-44D7-897A-8C33A0F4A103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86273ADC-77DD-44D7-897A-8C33A0F4A103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{115B5062-8753-4141-8B31-862CFB6D9BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{115B5062-8753-4141-8B31-862CFB6D9BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{115B5062-8753-4141-8B31-862CFB6D9BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{115B5062-8753-4141-8B31-862CFB6D9BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC8B628F-9EFC-42DD-9965-8AC2F0A91894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC8B628F-9EFC-42DD-9965-8AC2F0A91894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC8B628F-9EFC-42DD-9965-8AC2F0A91894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC8B628F-9EFC-42DD-9965-8AC2F0A91894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{329E99C0-7BFC-4C8D-8395-7CBF71637B43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329E99C0-7BFC-4C8D-8395-7CBF71637B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329E99C0-7BFC-4C8D-8395-7CBF71637B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329E99C0-7BFC-4C8D-8395-7CBF71637B43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

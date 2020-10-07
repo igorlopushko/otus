@@ -44,6 +44,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
             return result.Select(x => x.ToString()).ToArray();
         }
 
+        //TODO: re-work
         private int CalculateSum(int[] array, int leftIndex, int rightIndex)
         {
             var sum = 0;
