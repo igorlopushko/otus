@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Otus.Archiver.Algorithm.Huffman
 {
     [Serializable]
-    public class Node
+    internal class Node
     {
         public char Symbol { get; set; }
         public int Frequency { get; set; }

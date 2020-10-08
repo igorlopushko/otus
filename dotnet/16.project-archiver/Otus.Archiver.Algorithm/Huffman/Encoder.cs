@@ -1,74 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Otus.Archiver.Base;
 
 namespace Otus.Archiver.Algorithm.Huffman
 {
     public class Encoder : IEncoder
-    {
-        
-        private readonly Tree _tree;
-        private List<object> _settings;
-
-        public object[] Settings => _settings.ToArray();
-        
-        internal Encoder(Tree tree)
-        {
-            _tree = tree;
-            _settings = new List<object> {_tree};
-        }
-        
-        internal Encoder(string source)
-        {
-            _tree = new Tree();
-            _tree.Build(source);
-            _settings = new List<object> {_tree};
-        }
-        
-        public BitArray Encode(string source)
+    {   
+        public async Task<IArchive> EncodeAsync(string source)
         {
             var encodedSource = new List<bool>();
+            var settings = new List<object>();
 
-            foreach (var symbol in source)
+            await Task.Run(() =>
             {
-                var encodedSymbol = _tree.Root.Traverse(symbol, new List<bool>());
-                encodedSource.AddRange(encodedSymbol);
-            }
+                var tree = new Tree();
+                tree.Build(source);
+                settings.Add(tree.FrequencyTable);
+                
+                foreach (var symbol in source)
+                {
+                    var encodedSymbol = tree.Root.Traverse(symbol, new List<bool>());
+                    encodedSource.AddRange(encodedSymbol);
+                }
+            });
 
             var bits = new BitArray(encodedSource.ToArray());
 
-            return bits;
+            return new Archive
+            {
+                Data = bits,
+                Settings = settings.ToArray(),
+                Type = EncodingType.Huffman
+            };
         }
 
-        public string Decode(BitArray bits)
+        public async Task<string> DecodeAsync(IArchive archive)
         {
-            var current = _tree.Root;
             var decoded = string.Empty;
 
-            foreach (bool bit in bits)
+            await Task.Run(() =>
             {
-                if (bit)
+                var tree = new Tree();
+                tree.Restore((Dictionary<char, int>)archive.Settings[0]);
+                var current = tree.Root;
+                
+                foreach (bool bit in archive.Data)
                 {
-                    if (current.Right != null)
+                    if (bit)
                     {
-                        current = current.Right;
+                        if (current.Right != null)
+                        {
+                            current = current.Right;
+                        }
+                    }
+                    else
+                    {
+                        if (current.Left != null)
+                        {
+                            current = current.Left;
+                        }
+                    }
+
+                    if (tree.IsLeaf(current))
+                    {
+                        decoded += current.Symbol;
+                        current = tree.Root;
                     }
                 }
-                else
-                {
-                    if (current.Left != null)
-                    {
-                        current = current.Left;
-                    }
-                }
-
-                if (_tree.IsLeaf(current))
-                {
-                    decoded += current.Symbol;
-                    current = _tree.Root;
-                }
-            }
-
+            });
+            
             return decoded;
         }
     }

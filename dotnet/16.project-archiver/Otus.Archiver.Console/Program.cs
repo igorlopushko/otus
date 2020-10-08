@@ -10,7 +10,7 @@ namespace Otus.Archiver.Console
         {
             System.Console.WriteLine("Hello World!");
             
-            var factory = new ArchiveFactory(AlgorithmType.Huffman);
+            var factory = new ArchiveFactory(EncodingType.Huffman);
 
             //await factory.EncodeAsync("source.txt", "archive.dat");
             

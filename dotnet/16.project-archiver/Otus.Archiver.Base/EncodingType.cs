@@ -3,7 +3,7 @@ using System;
 namespace Otus.Archiver.Base
 {
     [Serializable]
-    public enum AlgorithmType
+    public enum EncodingType
     {
         Huffman,
         LZW

@@ -5,35 +5,41 @@ using System.Linq;
 namespace Otus.Archiver.Algorithm.Huffman
 {
     [Serializable]
-    public class Tree
+    internal class Tree
     {
-        private readonly List<Node> _nodes = new List<Node>();
-        private readonly Dictionary<char, int> _frequencies = new Dictionary<char, int>();
+        private Dictionary<char, int> _frequencyTable;
         
         public Node Root { get; set; }
-
+        public Dictionary<char, int> FrequencyTable => _frequencyTable;
+        
         public void Build(string source)
         {
             // build frequency table
-            foreach (var symbol in source)
+            _frequencyTable = BuildFrequencyTable(source);
+            
+            Process();
+        }
+        
+        public void Restore(Dictionary<char, int> frequencyTable)
+        {
+            // restore frequency table
+            _frequencyTable = frequencyTable;
+            
+            Process();
+        }
+
+        private void Process()
+        {
+            var nodes = _frequencyTable.Select(symbol => new Node
             {
-                if (!_frequencies.ContainsKey(symbol))
-                {
-                    _frequencies.Add(symbol, 0);
-                }
-
-                _frequencies[symbol]++;
-            }
-
+                Symbol = symbol.Key, 
+                Frequency = symbol.Value
+            }).ToList();
+            
             // build nodes
-            foreach (KeyValuePair<char, int> symbol in _frequencies)
+            while (nodes.Count > 1)
             {
-                _nodes.Add(new Node { Symbol = symbol.Key, Frequency = symbol.Value });
-            }
-
-            while (_nodes.Count > 1)
-            {
-                var orderedNodes = _nodes.OrderBy(node => node.Frequency).ToList();
+                var orderedNodes = nodes.OrderBy(node => node.Frequency).ToList();
 
                 if (orderedNodes.Count >= 2)
                 {
@@ -49,18 +55,34 @@ namespace Otus.Archiver.Algorithm.Huffman
                         Right = taken[1]
                     };
 
-                    _nodes.Remove(taken[0]);
-                    _nodes.Remove(taken[1]);
-                    _nodes.Add(parent);
+                    nodes.Remove(taken[0]);
+                    nodes.Remove(taken[1]);
+                    nodes.Add(parent);
                 }
 
-                Root = _nodes.FirstOrDefault();
+                Root = nodes.FirstOrDefault();
             }
         }
-
+        
         public bool IsLeaf(Node node)
         {
             return node.Left == null && node.Right == null;
+        }
+
+        private static Dictionary<char, int> BuildFrequencyTable(string source)
+        {
+            var dict = new Dictionary<char, int>();
+            foreach (var symbol in source)
+            {
+                if (!dict.ContainsKey(symbol))
+                {
+                    dict.Add(symbol, 0);
+                }
+
+                dict[symbol]++;
+            }
+
+            return dict;
         }
     }
 }

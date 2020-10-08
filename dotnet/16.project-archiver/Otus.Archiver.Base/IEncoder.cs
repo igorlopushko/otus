@@ -1,11 +1,10 @@
-using System.Collections;
+using System.Threading.Tasks;
 
 namespace Otus.Archiver.Base
 {
     public interface IEncoder
     {
-        BitArray Encode(string data);
-        string Decode(BitArray data);
-        object[] Settings { get; }
+        Task<IArchive> EncodeAsync(string data);
+        Task<string> DecodeAsync(IArchive archive);
     }
 }

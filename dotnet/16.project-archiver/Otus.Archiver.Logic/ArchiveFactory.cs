@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Otus.Archiver.Base;
 
@@ -8,27 +7,20 @@ namespace Otus.Archiver.Logic
 {
     public class ArchiveFactory
     {
-        private readonly AlgorithmType _algorithmType;
-        private readonly IEncoderBuilder<IEncoder> _builder;
+        private readonly EncodingType _encodingType;
+        private readonly IEncoder _encoder;
 
-        public ArchiveFactory(AlgorithmType algorithmType)
+        public ArchiveFactory(EncodingType encodingType)
         {
-            _algorithmType = algorithmType;
-            _builder = InitBuilder();
+            _encodingType = encodingType;
+            _encoder = InitEncoder();
         }
         
         public async Task EncodeAsync(string source, string destination)
         {
             var fileContent = await File.ReadAllTextAsync(source);
 
-            var encoder = _builder.Build(fileContent);
-
-            var archive = new Archive
-            {
-                Data = encoder.Encode(fileContent),
-                Type = _algorithmType,
-                Settings = encoder.Settings.ToArray()
-            };
+            var archive = await _encoder.EncodeAsync(fileContent);
             
             SerializeToFile(archive, destination);
         }
@@ -36,23 +28,21 @@ namespace Otus.Archiver.Logic
         public async Task DecodeAsync(string source, string destination)
         {
             var archive = DeserializeFromFile(source);
-            
-            var encoder =  _builder.Build(archive);
 
-            var decodedString = encoder.Decode(archive.Data);
+            var decodedString = await _encoder.DecodeAsync(archive);
 
             using (var writer = new StreamWriter(destination, false)){ 
                 await writer.WriteAsync(decodedString);
             }
         }
 
-        private IEncoderBuilder<IEncoder> InitBuilder()
+        private IEncoder InitEncoder()
         {
-            switch (_algorithmType)
+            switch (_encodingType)
             {
-                case AlgorithmType.Huffman:
-                    return new Algorithm.Huffman.EncoderBuilder();
-                case AlgorithmType.LZW:
+                case EncodingType.Huffman:
+                    return new Algorithm.Huffman.Encoder();
+                case EncodingType.LZW:
                     break;
             }
             
