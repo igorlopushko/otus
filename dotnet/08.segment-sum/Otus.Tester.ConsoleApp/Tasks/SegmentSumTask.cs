@@ -20,7 +20,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
             var arrayLength = int.Parse(values[0]);
             var operationNumber = int.Parse(values[1]);
 
-            var array = new int[arrayLength];
+            var ss = new SegmentSum(arrayLength);
             
             for (var i = 1; i <= operationNumber; i++)
             {
@@ -31,12 +31,15 @@ namespace Otus.Tester.ConsoleApp.Tasks
                 {
                     var index = int.Parse(operationValues[1]);
                     var value = int.Parse(operationValues[2]);
-                    array[index] = value;
+                    
+                    ss.Add(index, value);
                 } else if (operationType.Equals("Q", StringComparison.InvariantCultureIgnoreCase))
                 {
                     var startIndex = int.Parse(operationValues[1]);
                     var endIndex = int.Parse(operationValues[2]);
-                    var sum = CalculateSum(array, startIndex, endIndex);
+                    
+                    var sum = ss.Calculate(startIndex, endIndex);
+                    
                     result.Add(sum);
                 }
             }
@@ -44,54 +47,64 @@ namespace Otus.Tester.ConsoleApp.Tasks
             return result.Select(x => x.ToString()).ToArray();
         }
 
-        //TODO: re-work
-        private int CalculateSum(int[] array, int leftIndex, int rightIndex)
+        private class SegmentSum
         {
-            var sum = 0;
-            // length of the initial array
-            var k = Convert.ToDouble(array.Length);
-            // length of the initial array in power of 2
-            var n = Convert.ToInt32(Math.Pow(2, Math.Ceiling(Math.Log(k, 2))));
-            var internalArray = new int[2 * n];
+            private readonly int[] _halfSumArray;
 
-            // copy existing array
-            var initialArrayIndex = 0;
-            for (var i = n; i < internalArray.Length; i++)
+            public SegmentSum(int arrayLength)
             {
-                if (initialArrayIndex >= array.Length)
-                {
-                    break;
-                }
-                internalArray[i] = array[initialArrayIndex];
-                initialArrayIndex++;
-            }
-            
-            // calculate half sums
-            for (var i = n - 1; i >= 1; i--)
-            {
-                internalArray[i] = internalArray[2 * i] + internalArray[2 * i + 1];
+                // length of the initial array in power of 2 => length of the internal (half sum) array 
+                var n = Convert.ToInt32(Math.Pow(2, Math.Ceiling(Math.Log(arrayLength, 2))));
+
+                _halfSumArray = new int[2 * n];
             }
 
-            var leftIndexOffset = leftIndex + n;
-            var rightIndexOffset = rightIndex + n;
-
-            while (leftIndexOffset <= rightIndexOffset)
+            public void Add(int index, int value)
             {
-                if (leftIndexOffset % 2 == 1)
-                {
-                    sum += internalArray[leftIndexOffset];
-                }
+                var internalIndex = index + _halfSumArray.Length / 2;
+                _halfSumArray[internalIndex] = value;
 
-                if (rightIndexOffset % 2 == 0)
-                {
-                    sum += internalArray[rightIndexOffset];
-                }
+                // init indexes to calculate half sums up
+                var leftIndex = internalIndex % 2 == 0 ? internalIndex : internalIndex - 1;
+                var rightIndex = internalIndex % 2 == 1 ? internalIndex : internalIndex + 1;
+                var parentIndex = leftIndex / 2;
 
-                leftIndexOffset = (leftIndexOffset + 1) / 2;
-                rightIndexOffset = (rightIndexOffset - 1) / 2;
+                // recalculate half sums up
+                while (parentIndex > 0)
+                {
+                    _halfSumArray[parentIndex] = _halfSumArray[leftIndex] + _halfSumArray[rightIndex];
+
+                    leftIndex = leftIndex / 2 % 2 == 0 ? leftIndex / 2 : leftIndex / 2 - 1;
+                    rightIndex = rightIndex / 2 % 2 == 1 ? rightIndex / 2 : rightIndex / 2 + 1;
+                    parentIndex = leftIndex / 2;
+                }
             }
-            
-            return sum;
+
+            public int Calculate(int leftIndex, int rightIndex)
+            {
+                var sum = 0;
+
+                var leftIndexOffset = leftIndex + _halfSumArray.Length / 2;
+                var rightIndexOffset = rightIndex + _halfSumArray.Length / 2;
+
+                while (leftIndexOffset <= rightIndexOffset)
+                {
+                    if (leftIndexOffset % 2 == 1)
+                    {
+                        sum += _halfSumArray[leftIndexOffset];
+                    }
+
+                    if (rightIndexOffset % 2 == 0)
+                    {
+                        sum += _halfSumArray[rightIndexOffset];
+                    }
+
+                    leftIndexOffset = (leftIndexOffset + 1) / 2;
+                    rightIndexOffset = (rightIndexOffset - 1) / 2;
+                }
+
+                return sum;
+            }
         }
     }
 }
