@@ -5,7 +5,7 @@ using Otus.Tester.ConsoleApp.Base;
 
 namespace Otus.Tester.ConsoleApp.Tasks
 {
-    public class PrimAlgorithmTask : ITask
+    public class BellmanFordAlgorithmTask : ITask
     {
         public string[] Run(string[] data)
         {
@@ -23,7 +23,7 @@ namespace Otus.Tester.ConsoleApp.Tasks
             
             var g = new Graph(adjacencyMatrix);
             
-            var result = g.GetShortestPathBellmanFord(1);
+            var result = g.GetShortestPathBellmanFord(0);
             
             var stringResult = new List<string>();
             foreach (var distance in result)

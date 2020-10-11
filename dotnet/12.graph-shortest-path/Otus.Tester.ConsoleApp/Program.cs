@@ -15,16 +15,16 @@ namespace Otus.Tester.ConsoleApp
             switch (result)
             {
                 case 1:
-                    task = new KruskalAlgorithmTask();
-                    path = "data/0.Kruskal/";
+                    task = new DijkstraAlgorithmTask();
+                    path = "data/0.Dijkstra/";
                     break;
                 case 2:
-                    task = new PrimAlgorithmTask();
-                    path = "data/1.Prim/";
+                    task = new FloydWarshallAlgorithmTask();
+                    path = "data/1.Floyd-Warshall/";
                     break;
                 case 3:
-                    task = new BoruvkaAlgorithmTask();
-                    path = "data/2.Boruvka/";
+                    task = new BellmanFordAlgorithmTask();
+                    path = "data/2.Bellman-Ford/";
                     break;
                 default:
                     return;
@@ -43,9 +43,9 @@ namespace Otus.Tester.ConsoleApp
             while (true)
             {
                 Console.WriteLine("Выберите номер задания/решения:");
-                Console.WriteLine("{0} - Нахождение минимального остовного дерева Алгоритм Краскала", 1.ToString().PadRight(rightPadding));
-                Console.WriteLine("{0} - Нахождение минимального остовного дерева Алгоритм Прима", 2.ToString().PadRight(rightPadding));
-                Console.WriteLine("{0} - Нахождение минимального остовного дерева Алгоритм Буроки", 3.ToString().PadRight(rightPadding));
+                Console.WriteLine("{0} - Нахождение минимального пути Алгоритм Дейкстра", 1.ToString().PadRight(rightPadding));
+                Console.WriteLine("{0} - Нахождение минимального пути Алгоритм Флойда-Уоршелла", 2.ToString().PadRight(rightPadding));
+                Console.WriteLine("{0} - Нахождение минимального пути Алгоритм Белмана-Форда", 3.ToString().PadRight(rightPadding));
 
                 int result;
                 var answer = Console.ReadLine();

@@ -5,7 +5,7 @@ using Otus.Tester.ConsoleApp.Base;
 
 namespace Otus.Tester.ConsoleApp.Tasks
 {
-    public class BoruvkaAlgorithmTask : ITask
+    public class DijkstraAlgorithmTask : ITask
     {
         public string[] Run(string[] data)
         {
@@ -22,7 +22,8 @@ namespace Otus.Tester.ConsoleApp.Tasks
             }
             
             var g = new Graph(adjacencyMatrix);
-            var result = g.GetShortestPathDijkstra(1);
+            
+            var result = g.GetShortestPathDijkstra(0);
             
             var stringResult = new List<string>();
             foreach (var distance in result)

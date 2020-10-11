@@ -111,7 +111,7 @@ namespace Otus.DataStructure
         
         public IEnumerable<int> GetShortestPathDijkstra(int source)
         {
-            // the output array. dist[i] will hold the shortest distance from src to i
+            // the output array. distance[i] will hold the shortest distance from source to i
             int[] distance = new int[_vertices.Count];
 
             // shortestPathSet[i] will true if vertex i is included in shortest path 
@@ -193,41 +193,37 @@ namespace Otus.DataStructure
         
         public IEnumerable<int> GetShortestPathBellmanFord(int source)
         {
-            int[] distance = new int[_vertices.Count]; 
-  
-            // initialize distances from source to all other vertices as INFINITE 
-            for (int i = 0; i < _vertices.Count; ++i)
+            var distance = new int[_vertices.Count];
+
+            for (var i = 0; i < _vertices.Count; i++)
             {
                 distance[i] = int.MaxValue;
-            } 
-            distance[source] = 0; 
-  
-            // relax all edges |V| - 1 times.
-            // A simple shortest path from source to any other vertex can have at-most |V| - 1 edges 
-            for (var i = 1; i < _vertices.Count; i++)
+            }
+ 
+            distance[source] = 0;
+ 
+            for (var i = 1; i <= _vertices.Count - 1; ++i)
             {
                 foreach (var edge in _edges)
                 {
-                    var u = edge.Source; 
-                    var v = edge.Destination;
-                    if (distance[u] != int.MaxValue && 
-                        distance[u] + edge.Rank < distance[v])
+                    int u = edge.Source;
+                    int v = edge.Destination;
+                    int rank = edge.Rank;
+
+                    if (distance[u] != int.MaxValue && distance[u] + rank < distance[v])
                     {
-                        distance[v] = distance[u] + edge.Rank;
+                        distance[v] = distance[u] + rank;
                     }
                 }
-            } 
-  
-            // check for negative-weight cycles.
-            // the above step guarantees shortest distances if graph doesn't contain negative weight cycle.
-            // if we get a shorter path, then there is a cycle. 
+            }
+ 
             foreach (var edge in _edges)
             {
                 var u = edge.Source;
                 var v = edge.Destination;
-                
-                if (distance[u] != int.MaxValue && 
-                    distance[u] + edge.Rank < distance[v])
+                var rank = edge.Rank;
+
+                if (distance[u] != int.MaxValue && distance[u] + rank < distance[v])
                 {
                     return null;
                 }

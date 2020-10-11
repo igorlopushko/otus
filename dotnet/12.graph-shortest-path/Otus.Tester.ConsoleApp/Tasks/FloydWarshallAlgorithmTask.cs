@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Otus.DataStructure;
 using Otus.Tester.ConsoleApp.Base;
 
 namespace Otus.Tester.ConsoleApp.Tasks
 {
-    public class KruskalAlgorithmTask : ITask
+    public class FloydWarshallAlgorithmTask : ITask
     {
         public string[] Run(string[] data)
         {
@@ -25,10 +26,21 @@ namespace Otus.Tester.ConsoleApp.Tasks
             var result = g.GetShortestPathFloydWarshall();
             
             var stringResult = new List<string>();
-            /*foreach (var edge in result)
+            for (var i = 0; i < result.GetLength(0); i++)
             {
-                stringResult.Add($"{edge.Source + 1} {edge.Destination + 1} {edge.Rank}");
-            }*/
+                var line = new StringBuilder();
+                for (var j = 0; j < result.GetLength(1); j++)
+                {
+                    line.Append($"{ result[i, j]}");
+
+                    if (j < result.GetLength(1) - 1)
+                    {
+                        line.Append($" ");
+                    }
+                }
+                
+                stringResult.Add(line.ToString());
+            }
             
             return stringResult.ToArray();
         }
