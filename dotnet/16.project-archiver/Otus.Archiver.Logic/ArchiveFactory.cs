@@ -43,7 +43,7 @@ namespace Otus.Archiver.Logic
                 case EncodingType.Huffman:
                     return new Algorithm.Huffman.Encoder();
                 case EncodingType.LZW:
-                    break;
+                    return new Algorithm.LZW.Encoder();
             }
             
             throw new NotSupportedException("Not supported provided algorithm");
