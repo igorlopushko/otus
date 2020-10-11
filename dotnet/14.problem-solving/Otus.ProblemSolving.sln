@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.ProblemSolving.Task1", "Otus.ProblemSolving.Task1\Otus.ProblemSolving.Task1.csproj", "{747164AA-50EC-44A8-AD37-47EC568144D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.ProblemSolving.Task2", "Otus.ProblemSolving.Task2\Otus.ProblemSolving.Task2.csproj", "{4BE1CA47-2C28-457B-806C-647516CFE31D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.ProblemSolving.Task3", "Otus.ProblemSolving.Task3\Otus.ProblemSolving.Task3.csproj", "{03DD4B92-BAA3-45E2-B348-8C802EE25AE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.ProblemSolving.Task4", "Otus.ProblemSolving.Task4\Otus.ProblemSolving.Task4.csproj", "{AEAC26A0-747F-4352-AADC-CDA437697899}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{747164AA-50EC-44A8-AD37-47EC568144D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747164AA-50EC-44A8-AD37-47EC568144D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747164AA-50EC-44A8-AD37-47EC568144D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747164AA-50EC-44A8-AD37-47EC568144D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BE1CA47-2C28-457B-806C-647516CFE31D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE1CA47-2C28-457B-806C-647516CFE31D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE1CA47-2C28-457B-806C-647516CFE31D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE1CA47-2C28-457B-806C-647516CFE31D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03DD4B92-BAA3-45E2-B348-8C802EE25AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03DD4B92-BAA3-45E2-B348-8C802EE25AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03DD4B92-BAA3-45E2-B348-8C802EE25AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03DD4B92-BAA3-45E2-B348-8C802EE25AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEAC26A0-747F-4352-AADC-CDA437697899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEAC26A0-747F-4352-AADC-CDA437697899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEAC26A0-747F-4352-AADC-CDA437697899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEAC26A0-747F-4352-AADC-CDA437697899}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
