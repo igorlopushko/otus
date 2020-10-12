@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.ProblemSolving.Task6",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.ProblemSolving.Task7", "Otus.ProblemSolving.Task7\Otus.ProblemSolving.Task7.csproj", "{DFBA72F3-8DC3-4483-BCC0-18D6869D89D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.ProblemSolving.Task8", "Otus.ProblemSolving.Task8\Otus.ProblemSolving.Task8.csproj", "{C684AA19-ADCF-41A8-A1C4-23B8A78CFDF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{DFBA72F3-8DC3-4483-BCC0-18D6869D89D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFBA72F3-8DC3-4483-BCC0-18D6869D89D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFBA72F3-8DC3-4483-BCC0-18D6869D89D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C684AA19-ADCF-41A8-A1C4-23B8A78CFDF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C684AA19-ADCF-41A8-A1C4-23B8A78CFDF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C684AA19-ADCF-41A8-A1C4-23B8A78CFDF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C684AA19-ADCF-41A8-A1C4-23B8A78CFDF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
