@@ -19,7 +19,7 @@ namespace Otus.ProblemSolving.Task2
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             int n = int.Parse(Console.ReadLine()); 
             int[,] m = new int[n, n];

@@ -64,7 +64,7 @@ namespace Otus.ProblemSolving.Task1
             return (number & 1) == 1;
         }
         
-        static void Main(string[] args)
+        static void Main()
         {
             string[] line = Console.ReadLine().Split('+', '/');
 

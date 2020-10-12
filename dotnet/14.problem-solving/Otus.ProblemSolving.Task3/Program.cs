@@ -21,7 +21,7 @@ namespace Otus.ProblemSolving.Task3
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Int64 a, c, a1, c1, n;
 
