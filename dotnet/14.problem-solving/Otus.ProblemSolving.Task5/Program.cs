@@ -41,7 +41,7 @@ namespace Otus.ProblemSolving.Task5
                 var values = Console.ReadLine().Trim().Split(' ');
                 for (int y = 0; y < values.Length; y++)
                 {
-                    matrix[x, y] = int.Parse(values[y]);
+                    matrix[y, x] = int.Parse(values[y]);
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace Otus.ProblemSolving.Task5
             int minHeight = GetHeight(x, y);
             if (minHeight == 0)
                 return 0;
-            int maxSquare = minHeight + 1;
+            int maxSquare = minHeight == 1 ? minHeight : minHeight + 1;
             for (int xw = x + 1; xw < n; xw++)
             {
                 int height = GetHeight(xw, y);
