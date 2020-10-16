@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Otus.Archiver.Base;
-using Otus.Archiver.Logic;
 
 namespace Otus.Archiver.Console
 {
@@ -8,13 +6,8 @@ namespace Otus.Archiver.Console
     {
         static async Task Main(string[] args)
         {
-            System.Console.WriteLine("Hello World!");
-            
-            var factory = new ArchiveFactory(EncodingType.Huffman);
-
-            //await factory.EncodeAsync("source.txt", "archive.dat");
-            
-            await factory.DecodeAsync("archive.dat", "result.txt");
+            var command = CommandParser.Parse(args);
+            await command.Execute();
         }
     }
 }
