@@ -9,7 +9,9 @@ namespace Otus.Archiver.Console.Commands
         {
             await Task.Run(() => {
                 System.Console.WriteLine();
-                System.Console.WriteLine("Use the following pattern \"app --[command] --[options]\"");
+                System.Console.WriteLine("Welcome to the Archiver app!");
+                System.Console.WriteLine();
+                System.Console.WriteLine("Use the following pattern: \"app-name --[command] --[options] <arguments>\"");
                 System.Console.WriteLine();
                 System.Console.WriteLine("Here are the base commands:");
                 System.Console.WriteLine("\t{0, -30}: {1}", $"-{CommandInfo.HelpCommandShortTag}, --{CommandInfo.HelpCommandTag}", CommandInfo.HelpCommandDescription);
@@ -21,8 +23,8 @@ namespace Otus.Archiver.Console.Commands
                 System.Console.WriteLine("\t{0, -30}: {1}", $"-{CommandInfo.TargetOptionShortTag}, --{CommandInfo.TargetOptionTag} <FILE PATH>", CommandInfo.TargetOptionDescription);
                 System.Console.WriteLine("\t{0, -30}: {1}", $"-{CommandInfo.MethodOptionShortTag}, --{CommandInfo.MethodOptionTag} <VALUE>", CommandInfo.MethodOptionDescription);
                 System.Console.WriteLine("Here is the list of implemented archive methods:");
-                System.Console.WriteLine("\t{0, -30}: Huffman codes.", "[huffman]");
-                System.Console.WriteLine("\t{0, -30}: LZW algorithm.", "[lzw]");
+                System.Console.WriteLine("\t{0, -30}: {1}", CommandInfo.HuffmanMethodTag, CommandInfo.HuffmanMethodDescription);
+                System.Console.WriteLine("\t{0, -30}: {1}", CommandInfo.LzwMethodTag, CommandInfo.LzwMethodDescription);
                 System.Console.WriteLine();
             });
         }
