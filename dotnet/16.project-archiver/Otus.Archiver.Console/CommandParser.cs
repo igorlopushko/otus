@@ -31,7 +31,7 @@ namespace Otus.Archiver.Console
                     {
                         return new HelpCommand();
                     }
-                    return new UnArchiveCommand(sourceFile, targetFile, method);
+                    return new UnArchiveCommand(sourceFile, targetFile);
                 default:
                     return new UnsupportedCommand();
             }

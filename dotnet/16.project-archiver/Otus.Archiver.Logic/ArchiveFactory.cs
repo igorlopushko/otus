@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Otus.Archiver.Base;
 
@@ -8,9 +7,11 @@ namespace Otus.Archiver.Logic
 {
     public class ArchiveFactory
     {
-        private readonly EncodingType _encodingType;
-        private readonly IEncoder _encoder;
+        private EncodingType _encodingType;
+        private IEncoder _encoder;
 
+        public ArchiveFactory() { }
+        
         public ArchiveFactory(EncodingType encodingType)
         {
             _encodingType = encodingType;
@@ -19,6 +20,11 @@ namespace Otus.Archiver.Logic
         
         public async Task EncodeAsync(string source, string destination)
         {
+            if (_encoder == null)
+            {
+                throw new ArgumentException("Encoder is not initialized.");
+            }
+            
             var fileContent = await File.ReadAllTextAsync(source);
             
             var archive = await _encoder.EncodeAsync(fileContent);
@@ -29,10 +35,13 @@ namespace Otus.Archiver.Logic
         public async Task DecodeAsync(string source, string destination)
         {
             var archive = DeserializeFromFile(source);
-
+            _encodingType = archive.Type;
+            _encoder = InitEncoder();
+            
             var decodedString = await _encoder.DecodeAsync(archive);
 
-            using (var writer = new StreamWriter(destination, false)){ 
+            using (var writer = new StreamWriter(destination, false))
+            { 
                 await writer.WriteAsync(decodedString);
             }
         }
