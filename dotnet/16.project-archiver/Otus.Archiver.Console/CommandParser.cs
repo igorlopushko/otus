@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Otus.Archiver.Console.Base;
 using Otus.Archiver.Console.Commands;
 
@@ -28,7 +29,7 @@ namespace Otus.Archiver.Console
                     checkCmd = CheckMandatoryOptions(sourceFile, targetFile);
                     return checkCmd ?? new UnArchiveCommand(sourceFile, targetFile);
                 default:
-                    return new UnsupportedCommand();
+                    return new ErrorCommand(CommandInfo.NotSupportedCommandErrorMessage);
             }
         }
 
@@ -41,12 +42,17 @@ namespace Otus.Archiver.Console
             
             if (string.IsNullOrEmpty(sourceFile))
             {
-                return new ErrorCommand("Source file is not specified. Check help for more information.");
+                return new ErrorCommand(CommandInfo.SourceFileIsMissedErrorMessage);
+            }
+
+            if (!File.Exists(sourceFile))
+            {
+                return new ErrorCommand(string.Format(CommandInfo.SourceFileDoesNotExistErrorMessage, sourceFile));
             }
             
             if (string.IsNullOrEmpty(targetFile))
             {
-                return new ErrorCommand("Target file is not specified. Check help for more information.");
+                return new ErrorCommand(CommandInfo.TargetFileIsMissedErrorMessage);
             }
 
             return null;

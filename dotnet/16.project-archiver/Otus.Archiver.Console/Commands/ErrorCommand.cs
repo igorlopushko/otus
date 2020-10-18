@@ -16,9 +16,11 @@ namespace Otus.Archiver.Console.Commands
         {
             await Task.Run(() =>
             {
+                System.Console.ForegroundColor = System.ConsoleColor.Red;
                 System.Console.WriteLine();
                 System.Console.WriteLine(_message);
                 System.Console.WriteLine();
+                System.Console.ResetColor();
             });
         }
     }

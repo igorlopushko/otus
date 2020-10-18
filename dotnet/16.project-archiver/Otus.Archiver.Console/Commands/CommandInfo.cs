@@ -35,5 +35,10 @@ namespace Otus.Archiver.Console.Commands
         
         public const string LzwMethodTag = "lzw";
         public const string LzwMethodDescription = "LZW algorithm.";
+
+        public const string NotSupportedCommandErrorMessage = "Command is not supported. Check help for more information.";
+        public const string SourceFileIsMissedErrorMessage = "Source file is not specified. Check help for more information.";
+        public const string SourceFileDoesNotExistErrorMessage = "Source file '{0}' does not exisxt.";
+        public const string TargetFileIsMissedErrorMessage = "Target file is not specified. Check help for more information.";
     }
 }
