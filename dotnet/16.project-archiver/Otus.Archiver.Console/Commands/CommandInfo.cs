@@ -40,5 +40,6 @@ namespace Otus.Archiver.Console.Commands
         public const string SourceFileIsMissedErrorMessage = "Source file is not specified. Check help for more information.";
         public const string SourceFileDoesNotExistErrorMessage = "Source file '{0}' does not exisxt.";
         public const string TargetFileIsMissedErrorMessage = "Target file is not specified. Check help for more information.";
+        public const string MethodIsNotSupported = "Method '{0}' is not supported.";
     }
 }

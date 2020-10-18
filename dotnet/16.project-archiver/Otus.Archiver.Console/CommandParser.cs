@@ -13,7 +13,7 @@ namespace Otus.Archiver.Console
             var sourceFile = FindSourceFilePath(args);
             var targetFile = FindTargetFilePath(args);
             var method = FindMethod(args);
-            ICommand checkCmd;
+            ICommand errorCmd;
             
             switch (command)
             {
@@ -22,12 +22,19 @@ namespace Otus.Archiver.Console
                     return new HelpCommand();
                 case "archive":
                 case "a":
-                    checkCmd = CheckMandatoryOptions(sourceFile, targetFile);
-                    return checkCmd ?? new ArchiveCommand(sourceFile, targetFile, method);
+                    errorCmd = CheckMandatoryOptions(sourceFile, targetFile);
+                    if (errorCmd != null)
+                    {
+                        return errorCmd;
+                    }
+
+                    errorCmd = CheckMethod(method);
+                    
+                    return errorCmd ?? new ArchiveCommand(sourceFile, targetFile, method);
                 case "unarchive":
                 case "u":
-                    checkCmd = CheckMandatoryOptions(sourceFile, targetFile);
-                    return checkCmd ?? new UnArchiveCommand(sourceFile, targetFile);
+                    errorCmd = CheckMandatoryOptions(sourceFile, targetFile);
+                    return errorCmd ?? new UnArchiveCommand(sourceFile, targetFile);
                 default:
                     return new ErrorCommand(CommandInfo.NotSupportedCommandErrorMessage);
             }
@@ -53,6 +60,24 @@ namespace Otus.Archiver.Console
             if (string.IsNullOrEmpty(targetFile))
             {
                 return new ErrorCommand(CommandInfo.TargetFileIsMissedErrorMessage);
+            }
+
+            return null;
+        }
+
+        private static ICommand CheckMethod(string method)
+        {
+            if (!string.IsNullOrEmpty(method))
+            {
+                switch (method)
+                {
+                    case "rle":
+                    case "huffman":
+                    case "lzw":
+                        return null;
+                    default:
+                        return new ErrorCommand(string.Format(CommandInfo.MethodIsNotSupported, method));
+                }
             }
 
             return null;
