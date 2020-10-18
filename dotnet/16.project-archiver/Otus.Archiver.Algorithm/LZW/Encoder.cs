@@ -9,13 +9,13 @@ namespace Otus.Archiver.Algorithm.LZW
     {
         public async Task<IArchive> EncodeAsync(string data)
         {
-            var compressed = new List<ushort>();
+            var compressed = new List<uint>();
 
             await Task.Run(() =>
             {
                 // build the dictionary
-                var dictionary = new Dictionary<string, ushort>();
-                for (ushort i = 0; i < 256; i++)
+                var dictionary = new Dictionary<string, uint>();
+                for (uint i = 0; i < 256; i++)
                 {
                     dictionary.Add(((char) i).ToString(), i);
                 }
@@ -34,7 +34,7 @@ namespace Otus.Archiver.Algorithm.LZW
                         // write w to output
                         compressed.Add(dictionary[word]);
                         // wc is a new sequence; add it to the dictionary
-                        dictionary.Add(wc, (ushort)dictionary.Count);
+                        dictionary.Add(wc, (uint)dictionary.Count);
                         word = symbol.ToString();
                     }
                 }
@@ -55,15 +55,15 @@ namespace Otus.Archiver.Algorithm.LZW
 
         public async Task<string> DecodeAsync(IArchive archive)
         {
-            var data = (ushort[]) archive.Data;
-            var compressed = new List<ushort>(data);
+            var data = (uint[]) archive.Data;
+            var compressed = new List<uint>(data);
             var decompressed = new StringBuilder();
 
             await Task.Run(() =>
             {
                 // build the dictionary
-                var dictionary = new Dictionary<ushort, string>();
-                for (ushort i = 0; i < 256; i++)
+                var dictionary = new Dictionary<uint, string>();
+                for (uint i = 0; i < 256; i++)
                 {
                     dictionary.Add(i, ((char) i).ToString());
                 }
@@ -87,7 +87,7 @@ namespace Otus.Archiver.Algorithm.LZW
                     decompressed.Append(entry);
 
                     // new sequence; add it to the dictionary
-                    dictionary.Add((ushort)dictionary.Count, word + entry[0]);
+                    dictionary.Add((uint)dictionary.Count, word + entry[0]);
 
                     word = entry;
                 }
