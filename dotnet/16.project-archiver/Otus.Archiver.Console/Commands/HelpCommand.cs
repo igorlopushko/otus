@@ -23,6 +23,7 @@ namespace Otus.Archiver.Console.Commands
                 System.Console.WriteLine("\t{0, -30}: {1}", $"-{CommandInfo.TargetOptionShortTag}, --{CommandInfo.TargetOptionTag} <FILE PATH>", CommandInfo.TargetOptionDescription);
                 System.Console.WriteLine("\t{0, -30}: {1}", $"-{CommandInfo.MethodOptionShortTag}, --{CommandInfo.MethodOptionTag} <VALUE>", CommandInfo.MethodOptionDescription);
                 System.Console.WriteLine("Here is the list of implemented archive methods:");
+                System.Console.WriteLine("\t{0, -30}: {1}", CommandInfo.RleMethodTag, CommandInfo.RleMethodDescription);
                 System.Console.WriteLine("\t{0, -30}: {1}", CommandInfo.HuffmanMethodTag, CommandInfo.HuffmanMethodDescription);
                 System.Console.WriteLine("\t{0, -30}: {1}", CommandInfo.LzwMethodTag, CommandInfo.LzwMethodDescription);
                 System.Console.WriteLine();

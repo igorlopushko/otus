@@ -25,11 +25,9 @@ namespace Otus.Archiver.Algorithm.Huffman
                 }
             });
 
-            var bits = new BitArray(encodedSource.ToArray());
-
             return new Archive
             {
-                Data = bits,
+                Data = BitHelper.BitArrayToByteArray(new BitArray(encodedSource.ToArray())),
                 Settings = settings.ToArray(),
                 Type = EncodingType.Huffman
             };
@@ -38,6 +36,7 @@ namespace Otus.Archiver.Algorithm.Huffman
         public async Task<string> DecodeAsync(IArchive archive)
         {
             var decoded = string.Empty;
+            var bits = new BitArray(archive.Data);
 
             await Task.Run(() =>
             {
@@ -45,7 +44,7 @@ namespace Otus.Archiver.Algorithm.Huffman
                 tree.Restore((Dictionary<char, int>)archive.Settings[0]);
                 var current = tree.Root;
                 
-                foreach (bool bit in archive.Data)
+                foreach (bool bit in bits)
                 {
                     if (bit)
                     {

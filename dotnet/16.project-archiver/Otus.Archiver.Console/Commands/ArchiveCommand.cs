@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Otus.Archiver.Base;
 using Otus.Archiver.Console.Base;
@@ -20,8 +21,24 @@ namespace Otus.Archiver.Console.Commands
 
         public async Task Execute()
         {
-            var factory = new ArchiveFactory(EncodingType.Huffman);
+            var encodingType = string.IsNullOrEmpty(_method) ? EncodingType.Huffman : GetEncodingType();
+            var factory = new ArchiveFactory(encodingType);
             await factory.EncodeAsync(_sourceFile, _targetFile);
+        }
+
+        private EncodingType GetEncodingType()
+        {
+            switch (_method)
+            {
+                case "rle":
+                    return EncodingType.RLE;
+                case "huffman":
+                    return EncodingType.Huffman;
+                case "lzw":
+                    return EncodingType.LZW;
+                default:
+                    throw new ArgumentException("Not supported encoding method");
+            }
         }
     }
 }

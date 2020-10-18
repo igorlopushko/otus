@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Otus.Archiver.Base;
 
@@ -19,7 +20,7 @@ namespace Otus.Archiver.Logic
         public async Task EncodeAsync(string source, string destination)
         {
             var fileContent = await File.ReadAllTextAsync(source);
-
+            
             var archive = await _encoder.EncodeAsync(fileContent);
             
             SerializeToFile(archive, destination);
@@ -44,6 +45,8 @@ namespace Otus.Archiver.Logic
                     return new Algorithm.Huffman.Encoder();
                 case EncodingType.LZW:
                     return new Algorithm.LZW.Encoder();
+                case EncodingType.RLE:
+                    return new Algorithm.RLE.Encoder();
             }
             
             throw new NotSupportedException("Not supported provided algorithm");

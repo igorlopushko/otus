@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 
 namespace Otus.Archiver.Base
 
@@ -8,7 +7,7 @@ namespace Otus.Archiver.Base
     public class Archive : IArchive
     {
         public EncodingType Type { get; set; }
-        public BitArray Data { get; set; }
+        public byte[] Data { get; set; }
         public object[] Settings { get; set; }
     }
 }
