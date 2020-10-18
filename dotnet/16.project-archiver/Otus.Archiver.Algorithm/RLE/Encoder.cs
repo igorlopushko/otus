@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Text;
 using System.Threading.Tasks;
 using Otus.Archiver.Base;
@@ -42,8 +41,9 @@ namespace Otus.Archiver.Algorithm.RLE
 
         public async Task<string> DecodeAsync(IArchive archive)
         {
-            var chars = new char[Encoding.ASCII.GetCharCount(archive.Data, 0, archive.Data.Length)];  
-            Encoding.ASCII.GetChars(archive.Data, 0, archive.Data.Length, chars, 0);
+            var data = (byte[])archive.Data;
+            var chars = new char[Encoding.ASCII.GetCharCount(data, 0, data.Length)];  
+            Encoding.ASCII.GetChars(data, 0, data.Length, chars, 0);
             var asciiString = new string(chars);
 
             var result = new StringBuilder();

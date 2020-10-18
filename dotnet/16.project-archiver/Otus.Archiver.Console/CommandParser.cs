@@ -4,7 +4,7 @@ using Otus.Archiver.Console.Commands;
 
 namespace Otus.Archiver.Console
 {
-    public class CommandParser
+    public static class CommandParser
     {
         public static ICommand Parse(string[] args)
         {

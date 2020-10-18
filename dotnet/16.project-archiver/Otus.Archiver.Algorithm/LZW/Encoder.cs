@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,28 +45,18 @@ namespace Otus.Archiver.Algorithm.LZW
                     compressed.Add(dictionary[word]);
                 }
             });
-
-            var bytes = BitHelper.IntArrayToByteArray(compressed.ToArray());
-            var decoded = new List<int>(BitHelper.ByteArrayToIntArray(bytes));
-
-            for (int i = 0; i < compressed.Count; i++)
-            {
-                if (compressed[i] != decoded[i])
-                {
-                    throw new Exception();
-                }
-            }
             
             return new Archive
             {
-                Data = BitHelper.IntArrayToByteArray(compressed.ToArray()),
+                Data = compressed.ToArray(),
                 Type = EncodingType.LZW
             };
         }
 
         public async Task<string> DecodeAsync(IArchive archive)
         {
-            var compressed = new List<int>(BitHelper.ByteArrayToIntArray(archive.Data));
+            var data = (int[]) archive.Data;
+            var compressed = new List<int>(data);
             var decompressed = new StringBuilder();
 
             await Task.Run(() =>
