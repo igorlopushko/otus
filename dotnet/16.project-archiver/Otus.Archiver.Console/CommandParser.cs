@@ -12,6 +12,7 @@ namespace Otus.Archiver.Console
             var sourceFile = FindSourceFilePath(args);
             var targetFile = FindTargetFilePath(args);
             var method = FindMethod(args);
+            ICommand checkCmd;
             
             switch (command)
             {
@@ -20,21 +21,35 @@ namespace Otus.Archiver.Console
                     return new HelpCommand();
                 case "archive":
                 case "a":
-                    if (string.IsNullOrEmpty(sourceFile) || string.IsNullOrEmpty(targetFile))
-                    {
-                        return new HelpCommand();
-                    }
-                    return new ArchiveCommand(sourceFile, targetFile, method);
+                    checkCmd = CheckMandatoryOptions(sourceFile, targetFile);
+                    return checkCmd ?? new ArchiveCommand(sourceFile, targetFile, method);
                 case "unarchive":
                 case "u":
-                    if (string.IsNullOrEmpty(sourceFile) || string.IsNullOrEmpty(targetFile))
-                    {
-                        return new HelpCommand();
-                    }
-                    return new UnArchiveCommand(sourceFile, targetFile);
+                    checkCmd = CheckMandatoryOptions(sourceFile, targetFile);
+                    return checkCmd ?? new UnArchiveCommand(sourceFile, targetFile);
                 default:
                     return new UnsupportedCommand();
             }
+        }
+
+        private static ICommand CheckMandatoryOptions(string sourceFile, string targetFile)
+        {
+            if (string.IsNullOrEmpty(sourceFile) && string.IsNullOrEmpty(targetFile))
+            {
+                return new HelpCommand();
+            }
+            
+            if (string.IsNullOrEmpty(sourceFile))
+            {
+                return new ErrorCommand("Source file is not specified. Check help for more information.");
+            }
+            
+            if (string.IsNullOrEmpty(targetFile))
+            {
+                return new ErrorCommand("Target file is not specified. Check help for more information.");
+            }
+
+            return null;
         }
 
         private static string FindCommand(string[] args)
