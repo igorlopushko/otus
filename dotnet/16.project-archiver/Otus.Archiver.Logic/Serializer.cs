@@ -12,10 +12,10 @@ namespace Otus.Archiver.Logic
             formatter.Serialize(stream, obj);
         }
         
-        public static IArchive DeserializerFomBin(Stream stream)
+        public static T DeserializerFomBin(Stream stream)
         {
             var formatter = new BinaryFormatter();
-            return (IArchive)formatter.Deserialize(stream);
+            return (T)formatter.Deserialize(stream);
         }
     }
 }
