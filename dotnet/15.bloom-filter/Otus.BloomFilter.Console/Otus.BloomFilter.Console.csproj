@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Otus.BloomFilter.Implementation\Otus.BloomFilter.Implementation.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="data" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="data\sample.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="data\distionary.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>

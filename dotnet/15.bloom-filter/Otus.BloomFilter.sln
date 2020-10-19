@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.BloomFilter.Implementation", "Otus.BloomFilter.Implementation\Otus.BloomFilter.Implementation.csproj", "{23919840-5AF1-4E17-B432-9B2247FE0406}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.BloomFilter.Console", "Otus.BloomFilter.Console\Otus.BloomFilter.Console.csproj", "{66BF716B-BECC-4417-BDBD-347ACB02B1AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23919840-5AF1-4E17-B432-9B2247FE0406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23919840-5AF1-4E17-B432-9B2247FE0406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23919840-5AF1-4E17-B432-9B2247FE0406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23919840-5AF1-4E17-B432-9B2247FE0406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66BF716B-BECC-4417-BDBD-347ACB02B1AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66BF716B-BECC-4417-BDBD-347ACB02B1AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66BF716B-BECC-4417-BDBD-347ACB02B1AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66BF716B-BECC-4417-BDBD-347ACB02B1AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
