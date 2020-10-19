@@ -54,7 +54,9 @@ namespace Otus.Archiver.Algorithm.RLE
                 {
                     var current = c;
                     if (char.IsDigit(current))
+                    {
                         a += current;
+                    }
                     else
                     {
                         var count = int.Parse(a);
