@@ -111,7 +111,7 @@ namespace Otus.BloomFilter.Console
             // read dictionary
             file = new StreamReader("data/distionary.txt");
             var dictionary = new Dictionary<long, string>();
-            Int64 wordCount = 0;
+            var wordCount = 0;
             while((line = file.ReadLine()) != null)
             {
                 dictionary.Add(wordCount, line);
