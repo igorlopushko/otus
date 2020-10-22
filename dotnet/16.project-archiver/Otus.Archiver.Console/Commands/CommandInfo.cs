@@ -25,10 +25,10 @@ namespace Otus.Archiver.Console.Commands
         public const string MethodOptionTag = "method";
         public const string MethodOptionShortTag = "m";
         public const string MethodOptionDescription = 
-            "Is optional parameter. Does not required for UnArchive operation. If not set Huffman Codes are used as a default option.";
+            "Is optional parameter. Is not required for UnArchive operation. If not set Huffman Codes are used as a default option.";
 
         public const string RleMethodTag = "rle";
-        public const string RleMethodDescription = "Run Length Encoding.";
+        public const string RleMethodDescription = "Run-length encoding.";
         
         public const string HuffmanMethodTag = "huffman";
         public const string HuffmanMethodDescription = "Huffman codes.";
